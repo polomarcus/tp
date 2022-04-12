@@ -6,6 +6,9 @@ Have a github account : https://github.com/
 
 And a github repo to push your code.
 
+## Fork the repo on your own Github account
+* https://github.com/polomarcus/tp/fork
+
 ## Docker and Compose 
 Take time to read and install
 
@@ -29,25 +32,34 @@ docker-compose version 1.29.2
 ### Why Kafka ?
 https://kafka.apache.org/documentation/#introduction
 
+Answer these questions with what you can find on the documentation :
+
 - What problems does Kafka solve ?
-- Image which use cases 
+
+- Which use cases ?
+
 - What is a producer ?
+
 - What is a consumer ?
+
 - What are consumer groups ?
+
 - What is a offset ?
+
 - Why using partitions ? 
+
 - Why using replication ?
+
 - What are  In-Sync Replicas (ISR) ?
+
 
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_simple.png)
 
 ### Try to install Kafka without docker
 https://kafka.apache.org/documentation/#gettingStarted
 
-### Try to install kafka with docker
-
-Start multiples kakfa servers (called brokers) using a docker compose recipe : 
-* https://github.com/conduktor/kafka-stack-docker-compose
+### Use kafka with docker
+Start multiples kakfa servers (called brokers) by downloading a docker compose recipe : 
 * https://github.com/conduktor/kafka-stack-docker-compose#single-zookeeper--multiple-kafka
 
 Check on the docker hub the image used : 
@@ -74,37 +86,39 @@ docker exec -ti my_kafka_container_name bash
 
 ```
 > kafka-topics 
+# will give you help to use this command
 > kafka-topics --describe --bootstrap-server localhost:9092 
+# will give you an error
 ```
 Read this blog article to fix `Broker may not be available.` error : https://rmoff.net/2018/08/02/kafka-listeners-explained/
 
-Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config.
+Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose file.
 
-2. Create a "mailbox" - a topic with the default config
-3. Check on which Kafka broker the topic is located
-5. Send events to a topic on one terminal
-4. Keep reading events from a topic from one terminal
+2. Create a "mailbox" - a topic with the default config : https://kafka.apache.org/documentation/#quickstart_createtopic
+3. Check on which Kafka broker the topic is located using `--describe`
+5. Send events to a topic on one terminal : https://kafka.apache.org/documentation/#quickstart_send
+4. Keep reading events from a topic from one terminal : https://kafka.apache.org/documentation/#quickstart_consume
 * try the default config
 * what does the `--from-beginning` config do ?
-* what about using the `--group` option ?
+* what about using the `--group` option for your producer ?
 6. stop reading
 7. Keep sending some messages to the topic
 
 #### Partition 
-1. Check consumer group with `kafka-console-consumer`
+1. Check consumer group with `kafka-console-consumer` : https://kafka.apache.org/documentation/#basic_ops_consumer_group
 * notice if there is [lag](https://univalence.io/blog/articles/kafka-et-les-groupes-de-consommateurs/) for your group
 2. read from a new group, what happened ?
 3. read from a already existing group, what happened ?
 4. Recheck consumer group
 
 #### Replication - High Availability
-1. Increase replication in case one of your broker goes down
+1. Increase replication in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
 2. Stop one of your brokers with docker
-3. Describe your topic, check the ISR (in-sync replica) config
+3. Describe your topic, check the ISR (in-sync replica) config : https://kafka.apache.org/documentation/#design_ha
 4. Restart your stopped broker
 5. Check again your topic
 
-#### Using a Scala application with Kafka Streams to read and write to Kafka
+### Using a Scala application with Kafka Streams to read and write to Kafka
 * Scala https://docs.scala-lang.org/getting-started/index.html
 * Scala build tool : https://www.scala-sbt.org/download.html
 * https://kafka.apache.org/documentation/streams/
@@ -115,7 +129,6 @@ If it works on your machine, congrats. Test it on a remote servers now thanks to
 * How to use containers inside a CI : https://docs.github.com/en/github-ae@latest/actions/using-containerized-services/about-service-containers
 * A Github Action example : https://github.com/conduktor/kafka-stack-docker-compose/blob/master/.github/workflows/main.yml
 
-####
 # Tools
 * Scala IDE : https://www.jetbrains.com/idea/
 * Kafka User Interface (UI) : https://www.conduktor.io/download/
