@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  my-scala-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+#    depends_on:
+#      - postgres
+#  postgres:
+#   image: postgres:13.6
+#   container_name: postgres
+#   ports:
+#     - 5432:5432
+#   hostname: postgres
+#   environment:
+#     POSTGRES_USER: epf
+#     POSTGRES_DB: epf
+#     POSTGRES_PASSWORD: epf
