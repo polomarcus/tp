@@ -23,8 +23,12 @@ object ClimateService {
    * if the ppm value is valid (some ppm values are negative (CO2Record's "isValidPpmValue" function))
    * --> Some(value)
    * otherwise : None
+   * you can access to Tuple with myTuple._1, myTuple._2, myTuple._3
    */
-  def parseRawData(list: List[(Int, Int, Double)]) : List[Option[CO2Record]] = ???
+  def parseRawData(list: List[(Int, Int, Double)]) : List[Option[CO2Record]] = {
+    list.map { record => ??? }
+    ???
+  }
 
   /**
    * remove all values from december (12) of every year
@@ -46,9 +50,9 @@ object ClimateService {
     logger.info("Call record.show function here inside a map function")
   }
 
-  def getMinMax() : (Int, Int) = ???
+  def getMinMax(list: List[CO2Record]) : (Double, Double) = ???
 
-  def getMinMaxByYear(year: Int) : (Int, Int) = ???
+  def getMinMaxByYear(list: List[CO2Record], year: Int) : (Double, Double) = ???
 
   /**
    * CO2 record from 1958 to 2022

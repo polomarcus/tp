@@ -38,9 +38,9 @@ CO2 concentration level has been inserted inside `utils/ClimateService`.
 ![](https://assets.weforum.org/editor/large_EEYnarb17Mwon7wYfBZ_V6gUQ3hwp6_tpzpPzAMVLRw.png)
 
 ### How to write a Scala application ?
-* Scala IDE : https://www.jetbrains.com/idea/
+* Install a Scala compatible IDE : Visual Studio with a Scala Plugin or Idea: https://www.jetbrains.com/idea/
 * Scala https://docs.scala-lang.org/getting-started/index.html
-* Scala build tool (SBT) : https://www.scala-sbt.org/download.html
+* Another link if the first one does not work : https://www.scala-sbt.org/download.html
 
 #### Could you install SBT on your machine ? If yes
 ```bash
@@ -88,13 +88,11 @@ With data coming from Hawaii about CO2 concentration in the atmosphere, iterate 
 2. Look at and update "parseRawData" function inside `main/scala/com/github/polomarcus/utils/ClimateService`
 3. Create your own function to find the min, max value. Write unit tests and run `sbt test`
 Tips:
-* Tips: `def getMinMax() : (Int, Int)`
 * Use scala API to get max and min from a list : https://www.w3resource.com/scala-exercises/list/scala-list-exercise-6.php
 * You can also use "reduce functions" such as `foldLeft` : https://alvinalexander.com/scala/how-to-walk-scala-collections-reduceleft-foldright-cookbook/
 4. Create your own function to find the min, max value for a specific year. Write unit tests
 Tips: 
 * Re use `getMinMax` to create this function :
-* `def getMinMaxByYear(year: Int) : (Int, Int)`
 5. Create your own function to difference between the max and the min. Write unit tests
 
 Tips: 
