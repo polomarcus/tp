@@ -9,21 +9,6 @@ And a github repo to push your code.
 ## Fork the repo on your own Github account
 * https://github.com/polomarcus/tp/fork
 
-## Docker and Compose 
-Take time to read and install
-
-https://docs.docker.com/get-started/overview/
-```
-docker --version
-Docker version 20.10.14
-```
-
-https://docs.docker.com/compose/
-```
-docker-compose --version
-docker-compose version 1.29.2
-```
-
 ## TP2 - Functional programming for data engineering
 You're the new data engineer of a scientific team in charge of monitoring CO2 levels in atmosphere, [which are at their highest in 800,000 years.](https://www.weforum.org/agenda/2018/05/earth-just-hit-a-terrifying-milestone-for-the-first-time-in-more-than-800-000-years).
 
@@ -123,8 +108,20 @@ Test it on a remote servers now thanks to a Continuous Integration (CI) system s
 4. Find your CI job running
 5. Create a CI workflows using Docker to run the `sbt test` command (inspiration : https://github.com/polomarcus/television-news-analyser/blob/main/.github/workflows/docker-compose.yml#L7-L17)
 
-# Tools
-* Scala IDE : https://www.jetbrains.com/idea/
+## Docker and Compose
+Take time to read and install
+
+https://docs.docker.com/get-started/overview/
+```
+docker --version
+Docker version 20.10.14
+```
+
+https://docs.docker.com/compose/
+```
+docker-compose --version
+docker-compose version 1.29.2
+```
 
 ## TP1 - [Apache Kafka](https://kafka.apache.org/)
 ### Communication problems
