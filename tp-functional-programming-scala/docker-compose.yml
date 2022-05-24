@@ -1,0 +1,8 @@
+version: '2'
+services:
+  my-scala-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/epf
