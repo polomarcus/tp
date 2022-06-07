@@ -2,7 +2,7 @@ package com.github.polomarcus.main
 
 import com.github.polomarcus.model.News
 import com.typesafe.scalalogging.Logger
-import com.github.polomarcus.utils.{ClimateService, NewsService, SparkService}
+import com.github.polomarcus.utils.{ClimateService, NewsService, SparkService, PostgresService}
 import org.apache.spark.sql.{DataFrame, Dataset, SaveMode, SparkSession}
 
 object Main {
@@ -36,8 +36,9 @@ object Main {
     val count = NewsService.getNumberOfNews(newsDatasets)
     logger.info(s"We have ${count} news in our dataset")
 
-
-
+    //Save using PostgresService.save(???)
+    ???
+    
     logger.info("Stopping the app")
     spark.stop()
     System.exit(0)

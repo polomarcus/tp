@@ -34,7 +34,7 @@ class NewsServiceTest extends AnyFunSuite {
 
   test("filterNews") {
     val input = NewsService.filterNews(fakeListNews).collect()
-    val output = Array(news, news2)
+    val output = Array(newsClimate)
 
     assert( input.sameElements(output) )
   }
