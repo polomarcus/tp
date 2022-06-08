@@ -12,7 +12,7 @@ object PostgresService {
   val user = "user"
   val password = "password"
   val dbHost = sys.env.getOrElse("postgres", "localhost")
-  logger.warn(s"Connecting to jdbc:postgresql://$dbHost:5432/metabase")
+  val url = s"jdbc:postgresql://$dbHost:5432/metabase"
   val dbServer = s"$dbHost:5432/metabase"
 
   def save(dataset: Dataset[News]) = {

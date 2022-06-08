@@ -44,20 +44,6 @@ object NewsService {
   }
 
   /**
-   * Only keep news about climate
-   *
-   * Tips --> https://alvinalexander.com/scala/how-to-use-filter-method-scala-collections-cookbook/
-   *
-   * @param newsDataset
-   * @return newsDataset but with containsWordGlobalWarming to true
-   */
-  def filterNews(newsDataset: Dataset[News]) : Dataset[News] = {
-    newsDataset.filter { news =>
-      ??? //@TODO complete here
-    }
-  }
-
-  /**
    * detect if a sentence is climate related by looking for these words in sentence :
    * global warming
    * IPCC
