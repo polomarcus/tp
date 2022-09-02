@@ -5,3 +5,5 @@ target/
 .bsp
 project/target
 project/project
+.vscode/
+.metals/
