@@ -3,7 +3,6 @@ package com.github.polomarcus.utils
 import com.github.polomarcus.conf.ConfService
 import com.typesafe.scalalogging.Logger
 import org.apache.kafka.clients.producer._
-import org.sparkproject.jetty.util.ProcessorUtils
 
 import java.util.Properties
 import scala.Predef.Ensuring
@@ -24,7 +23,7 @@ object KafkaProducerService {
     val record = new ProducerRecord(topic, key, value)
 
     try {
-      val metadata = ??? // @TODO
+      producer.send(record)
 
       logger.info(s"""
         Sending message with key "$key" and value "$value"

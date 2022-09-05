@@ -100,7 +100,40 @@ What are we noticing ? What we change a configuration to not re read the same da
 We have introduced a bug in our program, and we would like to replay some data. Can we use Conduktor to help our consumer group? Should we create a new consumer group ?
 * [ ][Help](https://kafka.apache.org/documentation.html#basic_ops_consumer_group)
 
+#### Schema Registry
+##### Intro
+Look at :
+* your docker-compose.yml, and the schema-registry service.
+* Inside Conduktor, configure the connection with your schema-registry (http://localhost:8081)
+
+##### Questions
+* [ ] Where are stored schemas information ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html)
+* [ ] What is serialization ? [Help](https://developer.confluent.io/learn-kafka/kafka-streams/serialization/#serialization)
+* [ ] What serialization format are supported ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html#avro-json-and-protobuf-supported-formats-and-extensibility)
+* [ ] Why is the Avro format so compact ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html#ak-serializers-and-deserializers-background)
+* [ ] What are the best practices to run a Schema Registry in production ? [Help1](https://docs.confluent.io/platform/current/schema-registry/index.html#sr-high-availability-single-primary) and [Help2](https://docs.confluent.io/platform/current/schema-registry/installation/deployment.html#running-sr-in-production)
+
+##### Code
+
+[How to create a custom serializer ?](https://developer.confluent.io/learn-kafka/kafka-streams/serialization/#custom-serdes)
+
+[Kafka Streams Data Types and Serialization](https://docs.confluent.io/platform/current/streams/developer-guide/datatypes.html#avro)
+
+1. Inside `KafkaAvroProducerService`, replace `???` to send your first message using Avro and the Schema Registry.
+2. Add a new property to the class `News` called `date: java.sql.Timestamp`
+3. Send another message and on Conduktor see what happens
+4. Modify the class `News` from `title: String` to `bigTitle: String`
+5. What happens on your console log when sending messages ? 
+
+#### Monitoring and Operations
+##### Questions
+* [ ] Which metrics can we monitor ?
+[Datadog's Kafka dashboard overview](https://www.datadoghq.com/dashboards/kafka-dashboard/)
 
 ### Useful links
 * https://sparkbyexamples.com/kafka/apache-kafka-consumer-producer-in-scala/
 * https://www.confluent.io/fr-fr/blog/kafka-scala-tutorial-for-beginners/
+* https://developer.confluent.io/learn-kafka/kafka-streams/get-started/
+* [Hands-on Kafka Streams in Scala](https://softwaremill.com/hands-on-kafka-streams-in-scala/)
+* [Scala, Avro Serde et Schema registry](https://univalence.io/blog/drafts/scala-avro-serde-et-schema-registry/)
+* [Usage as a Kafka Serde (kafka lib for avro)](https://github.com/sksamuel/avro4s#usage-as-a-kafka-serde)
