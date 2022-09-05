@@ -10,7 +10,7 @@
 Start multiples kakfa servers (called brokers) using the docker compose recipe `docker-compose.yml` :
 
 ```bash
-docker-compose -f docker-compose up --detached
+docker-compose -f docker-compose.yml up --detached
 ```
 
 Check on the docker hub the image used :
@@ -60,22 +60,22 @@ sbt run
 ##### Question 1
 Your ops team tells your app is slow and the CPU is not used much, they were hoping to help you but they are not Kafka experts.
 
-* Look at the method `producer.flush()`, can you improve the speed of the program ? 
-* What about batching the messages ? [Help](https://www.conduktor.io/kafka/kafka-producer-batching)
+* [ ] Look at the method `producer.flush()`, can you improve the speed of the program ? 
+* [ ] What about batching the messages ? [Help](https://www.conduktor.io/kafka/kafka-producer-batching)
 
 ##### Question 2
 Your friendly ops team warns you about kafka disks starting to be full. What can you do ?
 
 Tips : 
-* What about [messages compression](https://kafka.apache.org/documentation/#producerconfigs_compression.type) ? Can you implement it ? [You heard that snappy compression is great.](https://www.conduktor.io/kafka/producer-default-partitioner-and-sticky-partitioner)
-* What about [messages lifetime](https://kafka.apache.org/documentation/#topicconfigs_delete.retention.ms) on your kafka brokers ? Can you change your topic config ?
+* [ ] What about [messages compression](https://kafka.apache.org/documentation/#producerconfigs_compression.type) ? Can you implement it ? [You heard that snappy compression is great.](https://www.conduktor.io/kafka/producer-default-partitioner-and-sticky-partitioner)
+* [ ] What about [messages lifetime](https://kafka.apache.org/documentation/#topicconfigs_delete.retention.ms) on your kafka brokers ? Can you change your topic config ?
 
 ##### Question 3
 After a while and a lot of deployments and autoscaling (adding and removing due to traffic spikes), on your data quality dashboard you are seeing some messages are duplicates or missing. What can you do ?
 
-* What are ["acks"](https://kafka.apache.org/documentation/#producerconfigs_acks) ? when to use acks=0 ? when to use acks=all?
-* Can [idempotence](https://kafka.apache.org/documentation/#producerconfigs_enable.idempotence) help us ?
-* what is ["min.insync.replicas"](https://kafka.apache.org/documentation/#brokerconfigs_min.insync.replicas) ?
+* [ ] What are ["acks"](https://kafka.apache.org/documentation/#producerconfigs_acks) ? when to use acks=0 ? when to use acks=all?
+* [ ] Can [idempotence](https://kafka.apache.org/documentation/#producerconfigs_enable.idempotence) help us ?
+* [ ] what is ["min.insync.replicas"](https://kafka.apache.org/documentation/#brokerconfigs_min.insync.replicas) ?
 
 #### Consumer
 The goal is to read messages from our producer thanks to the "KafkaConsumerService" class.
@@ -94,11 +94,11 @@ Now, resend messages to kafka and look at the consumer group lag inside Condukto
 What are we noticing ? What we change a configuration to not re read the same data always and always ?
 
 ##### Question 1
-* What happens if your consumer crash while processing data ? What is the "at most once" / "at least once" / "exactly once" semantics ? [Help](https://www.conduktor.io/kafka/complete-kafka-consumer-with-java#Automatic-Offset-Committing-Strategy-1)
+* [ ] What happens if your consumer crash while processing data ? What is the "at most once" / "at least once" / "exactly once" semantics ? [Help](https://www.conduktor.io/kafka/complete-kafka-consumer-with-java#Automatic-Offset-Committing-Strategy-1)
 
 ##### Question 2
 We have introduced a bug in our program, and we would like to replay some data. Can we use Conduktor to help our consumer group? Should we create a new consumer group ?
-* [Help](https://kafka.apache.org/documentation.html#basic_ops_consumer_group)
+* [ ][Help](https://kafka.apache.org/documentation.html#basic_ops_consumer_group)
 
 
 ### Useful links
