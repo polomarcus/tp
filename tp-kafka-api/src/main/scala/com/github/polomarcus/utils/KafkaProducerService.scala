@@ -8,7 +8,7 @@ import java.util.Properties
 import scala.Predef.Ensuring
 
 object KafkaProducerService {
-  val logger = Logger(KafkaProducerService.getClass)
+  val logger = Logger(this.getClass)
 
   private val props = new Properties()
   props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ConfService.BOOTSTRAP_SERVERS_CONFIG)

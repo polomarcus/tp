@@ -4,8 +4,14 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+    environment:
+      - BOOTSTRAP_SERVERS=kafka1:19092
+      - SCHEMA_REGISTRY=http://kafka-schema-registry:8081
+    depends_on:
+      - kafka1
     volumes:
-      - ./:/usr/epf
+      - ./:/usr/tp
+      - .cache/:/root/.cache # trick to save coursier (sbt) cache
 
   zoo1:
     image: confluentinc/cp-zookeeper:7.1.3

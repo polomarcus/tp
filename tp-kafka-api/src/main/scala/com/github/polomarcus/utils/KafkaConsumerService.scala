@@ -36,7 +36,7 @@ object KafkaConsumerService {
 
   def consume() = {
     try {
-      for (i <- 0 to 20)  {
+      for (i <- 0 to 20)  { // to avoid a while(true) loop
         val messages = consumer.poll(Duration.ofMillis(1000))
         if( messages.count() > 0) {
           messages.forEach(record => {

@@ -12,17 +12,17 @@ Start multiples kakfa servers (called brokers) using the docker compose recipe `
 ```bash
 docker-compose -f docker-compose.yml up --detached
 ```
-
 Check on the docker hub the image used :
 * https://hub.docker.com/r/confluentinc/cp-kafka
 
-### Verify
+#### Verify Docker containers
 ```
 docker ps
 CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS         PORTS                                                                                  NAMES
 b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 seconds ago   Up 9 seconds   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp, 0.0.0.0:9999->9999/tcp, :::9999->9999/tcp   kafka1
 (...)
 ```
+
 
 ### Kafka User Interface - Conduktor
 Download and install : https://www.conduktor.io/download/
@@ -49,12 +49,17 @@ Using the `scala/com.github.polomarcus/utis/KafkaProducerService`, send messages
 Questions :
 * What are serializers (and deserializers) ? What is the one used here ? Why use them ?
 
-To run your program 
+#### To run your program 
 ```aidl
 sbt "runMain com.github.polomarcus.main.MainKafkaProducer"
 # OR
 sbt run
 # and type "2" to run "com.github.polomarcus.main.MainKafkaProducer"
+
+# OR
+docker-compose run my-scala-app bash
+> sbt
+> run
 ```
 
 ##### Question 1
@@ -107,7 +112,8 @@ Look at :
 * Inside Conduktor, configure the connection with your schema-registry (http://localhost:8081)
 
 ##### Questions
-* [ ] Where are stored schemas information ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html)
+* [ ] What are the benefits to use a Schema Registry for messages ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html)
+* [ ] Where are stored schemas information ?
 * [ ] What is serialization ? [Help](https://developer.confluent.io/learn-kafka/kafka-streams/serialization/#serialization)
 * [ ] What serialization format are supported ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html#avro-json-and-protobuf-supported-formats-and-extensibility)
 * [ ] Why is the Avro format so compact ? [Help](https://docs.confluent.io/platform/current/schema-registry/index.html#ak-serializers-and-deserializers-background)
@@ -120,10 +126,12 @@ Look at :
 [Kafka Streams Data Types and Serialization](https://docs.confluent.io/platform/current/streams/developer-guide/datatypes.html#avro)
 
 1. Inside `KafkaAvroProducerService`, replace `???` to send your first message using Avro and the Schema Registry.
-2. Add a new property to the class `News` called `date: java.sql.Timestamp`
-3. Send another message and on Conduktor see what happens
-4. Modify the class `News` from `title: String` to `bigTitle: String`
-5. What happens on your console log when sending messages ? 
+2. Add a new property to the class `News` called `test: String`
+3. What happens on your console log when sending messages ?
+4. Modify the class `News` from `test: Option[String] = None`
+5. Send another message and on Conduktor Schema Registry tab, see what happens
+
+[About schema evolution](https://docs.confluent.io/platform/current/schema-registry/avro.html#schema-evolution)
 
 #### Monitoring and Operations
 ##### Questions

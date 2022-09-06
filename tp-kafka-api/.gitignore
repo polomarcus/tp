@@ -7,3 +7,4 @@ target/
 .bsp
 project/target
 project/project
+.cache
