@@ -133,9 +133,54 @@ Look at :
 
 [About schema evolution](https://docs.confluent.io/platform/current/schema-registry/avro.html#schema-evolution)
 
+#### Kafka Connect 
+Kafka Connect is a free, open-source component of Apache Kafka® that works as a centralized data hub for simple data integration between databases, key-value stores, search indexes, and file systems. [Learn more here](https://docs.confluent.io/platform/current/connect/index.html)
+
+[!](https://images.ctfassets.net/gt6dp23g0g38/5vGOBwLiNaRedNyB0yaiIu/529a29a059d8971541309f7f57502dd2/ingest-data-upstream-systems.jpg)
+
+Videos to learn :
+* [Video series with Confluent](https://developer.confluent.io/learn-kafka/kafka-connect/intro/)
+* [Video series with Conduktor](https://www.youtube.com/watch?v=4GSmIE9ji9c&list=PLYmXYyXCMsfMMhiKPw4k1FF7KWxOEajsA&index=25)
+
+##### Where to find connectors ?
+Already-made connectors can be found on [the Confluent Hub](https://www.confluent.io/hub/)
+
+One has already being installed via docker-compose.yml, can you spot it ?
+
+This File Sink connector read from a topic, and write it as a file on your local machine.
+
+##### How to start a connector ?
+For tests purposes, we are going to use the [Standalone run mode](https://docs.confluent.io/kafka-connectors/self-managed/userguide.html#standalone-mode)
+
+In order to run a [FileStream connector](https://docs.confluent.io/platform/current/connect/filestream_connector.html#kconnect-long-filestream-connectors), to read from our topics set inside the `kafka-connect-configs/connect-file-sink-properties`
+
+```bash
+docker-compose run kafka-connect bash
+> ls
+> cat connect-file-sink.properties
+> connect-standalone connect-standalone.properties connect-file-sink.properties
+```
+
+A file should have been produced on your local container
+```bash
+ls 
+cat test.sink.txt
+```
+
+**How can we use this kind of connector for a production use ?** 
+* [ ] Can we find another connector [on the Confluent Hub](https://www.confluent.io/hub/) that can write inside a data lake ?
+
+##### How do Serializers work for Kafka connect ?
+Inside `kafka-connect-config/connect-file-sink.properties`, we need to set the serializer we used to produce the data, for our case we want to use the **String Serializer** inside our config.
+
+Tips : [Kafka Connect Deep Dive – Converters and Serialization Explained](https://www.confluent.io/fr-fr/blog/kafka-connect-deep-dive-converters-serialization-explained/)
+
+##### How do consumer group work for Kafka connect ?
+Look on Conduktor to see if a Connector use a consumer group to bookmark partitions' offsets.
+
 #### Monitoring and Operations
 ##### Questions
-* [ ] Which metrics can we monitor ?
+* [ ] Which metrics should we monitor ?
 [Datadog's Kafka dashboard overview](https://www.datadoghq.com/dashboards/kafka-dashboard/)
 
 ### Useful links
