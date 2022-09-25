@@ -50,7 +50,7 @@ Questions :
 * What are serializers (and deserializers) ? What is the one used here ? Why use them ?
 
 #### To run your program 
-```aidl
+```bash
 sbt "runMain com.github.polomarcus.main.MainKafkaProducer"
 # OR
 sbt run
@@ -178,9 +178,51 @@ Tips : [Kafka Connect Deep Dive – Converters and Serialization Explained](http
 ##### How do consumer group work for Kafka connect ?
 Look on Conduktor to see if a Connector use a consumer group to bookmark partitions' offsets.
 
+#### Kafka Streams
+[Kafka Streams Intro](https://kafka.apache.org/documentation/streams/)
+
+[Streams Developer Guide](https://docs.confluent.io/platform/current/streams/developer-guide/dsl-api.html#overview)
+
+* [ ] What are the differences between the consumer, the producer APIs, and Kafka streams ? [Help1](https://stackoverflow.com/a/44041420/3535853)
+* [ ] When to use Kafka Streams instead of the consumer API ?
+* [ ] What is a `Serde`?
+* [ ] What is a KStream?
+* [ ] What is a KTable? What is a compacted topic ?
+* [ ] What is a GlobalKTable?
+* [ ] What is a [stateful operation](https://developer.confluent.io/learn-kafka/kafka-streams/stateful-operations/) ?
+
+What are the new [configs](https://kafka.apache.org/documentation/#streamsconfigs) we can use ?
+
+
+##### Code
+[!MapReduce](http://coderscat.com/images/2020_09_10_understanding-map-reduce.org_20200918_164359.png)
+
+We are going to aggregate (count) how many times we receive the same word inside the topic ConfService.TOPIC_OUT. For this we need to `map` every message to separate every words.
+
+After this, we are going to filter any messages that contains `"filter"`
+
+Then, after we filter these messages, we are going to read another topic, to join it with our aggregate
+
+
+Inside `KafkaStreamsService` write code to perform :
+* Write a filter function that remove every message containing the letter "filter"
+* Write a function that join a KTable (our word count) with a new KStream that read from a new topic you need to create `word`.
+This should display in the console the value of the KTable and the new KStream based on the same key. If we send a message with a key "value10" and the value "active", it should return key : "value10" and value (6, active), that is to say the joined values.
+
+
+To execute the code you would need this command :
+```bash
+sbt "runMain com.github.polomarcus.main.MainKafkaStream"
+```
+
+
+* [ ] Stop your application once you have processed messages. If you restart your applicaton and resend messages, pay attention to your values inside the KTable. [How is the KTable state saved ?](https://docs.confluent.io/platform/current/streams/architecture.html#fault-tolerance)
+
+Lot of examples can be found [here](https://blog.rockthejvm.com/kafka-streams/)
+
 #### Monitoring and Operations
 ##### Questions
-* [ ] Which metrics should we monitor ?
+* [ ] Which metrics should we monitor once our application is deployed to the real world ?
 [Datadog's Kafka dashboard overview](https://www.datadoghq.com/dashboards/kafka-dashboard/)
 
 ### Useful links
@@ -190,3 +232,4 @@ Look on Conduktor to see if a Connector use a consumer group to bookmark partiti
 * [Hands-on Kafka Streams in Scala](https://softwaremill.com/hands-on-kafka-streams-in-scala/)
 * [Scala, Avro Serde et Schema registry](https://univalence.io/blog/drafts/scala-avro-serde-et-schema-registry/)
 * [Usage as a Kafka Serde (kafka lib for avro)](https://github.com/sksamuel/avro4s#usage-as-a-kafka-serde)
+* [Kafka Streams example](https://blog.rockthejvm.com/kafka-streams/)

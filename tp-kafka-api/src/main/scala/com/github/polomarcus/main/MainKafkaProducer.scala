@@ -12,6 +12,7 @@ object MainKafkaProducer {
     //@TODO go to ConfService to modify the TOPIC_OUT value by yours
     for (i <- 0 to 20) {
       KafkaProducerService.produce(ConfService.TOPIC_OUT, s"key$i", s"value$i")
+      KafkaProducerService.produce(ConfService.TOPIC_OUT, s"key$i", s"filter$i")
     }
 
     logger.warn(s"Stopping the app ${this.getClass}")
