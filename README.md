@@ -31,17 +31,16 @@ docker-compose version 1.29.2 (example)
 #### Update your fork
 * https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork
 
-## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
-* Open `'tp-docker-api`
+## TP - Functional programming for data engineering
+* Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/tp-functional-programming-scala)
 
 ## TP - Functional programming for data engineering
-* Open `tp-functional-programming-scala`
-
-## TP - Functional programming for data engineering
-* Open `tp-data-processing-framework`
+* Open [tp-data-processing-framework](https://github.com/polomarcus/tp/tree/main/tp-data-processing-framework)
 
 ## TP - Batch with Spark and BI with metabase
-* Open `tp-bi-spark-framework`
+* Open [tp-bi-spark-framework](https://github.com/polomarcus/tp/tree/main/tp-bi-spark-framework)
 
-## TP - Kafka Streams to read and write to Kafka
-* https://kafka.apache.org/documentation/streams/
+## TP - Getting started with Apache Kafka (Bash/Docker)
+* Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/tp-docker-kafka-bash)
+## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
+* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/tp-kafka-api)
