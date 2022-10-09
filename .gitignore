@@ -7,3 +7,5 @@ project/target
 project/project
 .vscode/
 .metals/
+.cache
+**/.cache
