@@ -42,5 +42,9 @@ docker-compose version 1.29.2 (example)
 
 ## TP - Getting started with Apache Kafka (Bash/Docker)
 * Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/tp-docker-kafka-bash)
+
 ## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
 * Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/tp-kafka-api)
+
+## TP - [Apache Kafka - Spark Structured Streaming](https://kafka.apache.org/)
+* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/tp-spark-structured-stream-kafka)
