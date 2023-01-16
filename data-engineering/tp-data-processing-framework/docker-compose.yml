@@ -5,4 +5,5 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - ./:/usr/epf
+      - ./:/usr/tp
+      - .cache/:/root/.cache # trick to save coursier (sbt) cache

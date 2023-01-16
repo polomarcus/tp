@@ -5,17 +5,19 @@ import org.scalatest.funsuite.AnyFunSuite
 //@See https://www.scalatest.org/scaladoc/3.1.2/org/scalatest/funsuite/AnyFunSuite.html
 class ClimateServiceTest extends AnyFunSuite {
   test("containsWordGlobalWarming - non climate related words should return false") {
-    assert(!ClimateService.isClimateRelated("pizza"))
+    assert( ClimateService.isClimateRelated("pizza") == false)
   }
 
   test("isClimateRelated - climate related words should return true") {
-    assert(ClimateService.isClimateRelated("climate change"))
+    assert(ClimateService.isClimateRelated("climate change") == true)
     assert(ClimateService.isClimateRelated("IPCC"))
   }
 
   //@TODO
   test("parseRawData") {
     val firstRecord = (2003, 1, 355.2)
+    //help: to acces 2003 of this tuple, you can do firstRecord._1
+
     val secondRecord = (2004, 1, 375.2)
     val list1 = List(firstRecord, secondRecord)
 

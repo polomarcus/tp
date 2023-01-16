@@ -9,7 +9,8 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./:/usr/epf
+      - ./:/usr/tp
+      - .cache/:/root/.cache # trick to save coursier (sbt) cache
 
   metabase: # https://www.metabase.com/learn/getting-started/getting-started.html
     image: metabase/metabase:latest

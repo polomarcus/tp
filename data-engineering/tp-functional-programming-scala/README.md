@@ -1,6 +1,6 @@
 # Practices - Data engineering
 
-## TP2 - Functional programming for data engineering
+## Functional programming for data engineering
 You're the new data engineer of a scientific team in charge of monitoring CO2 levels in atmosphere, [which are at their highest in 800,000 years.](https://www.weforum.org/agenda/2018/05/earth-just-hit-a-terrifying-milestone-for-the-first-time-in-more-than-800-000-years).
 
 You have to give your best estimate of CO2 levels for 2050. 
@@ -9,7 +9,7 @@ Your engineering team is famous for taking a great care of **the developer exper
 
 Your goal is to map, parse, filter CO2 concentration levels in the atmosphere coming from an observatory in Hawaii from 1950 to 2022.
 
-CO2 concentration level has been inserted inside `utils/ClimateService`.
+For convenience, CO2 concentration levels have been inserted inside this file `utils/ClimateService`.
 
 ![](https://assets.weforum.org/editor/large_EEYnarb17Mwon7wYfBZ_V6gUQ3hwp6_tpzpPzAMVLRw.png)
 
@@ -17,6 +17,7 @@ CO2 concentration level has been inserted inside `utils/ClimateService`.
 * Install a Scala compatible IDE : Visual Studio with a Scala Plugin or Idea: https://www.jetbrains.com/idea/
 * Scala https://docs.scala-lang.org/getting-started/index.html
 * Another link if the first one does not work : https://www.scala-sbt.org/download.html
+* Help your colleagues to install their environment, the best way to learn.
 
 #### Could you install SBT on your machine ? If yes
 ```bash
@@ -48,26 +49,29 @@ docker-compose run my-scala-app bash # connect to your container to acces to SBT
 **Pro Tips** : https://www.scala-sbt.org/1.x/docs/Running.html#Continuous+build+and+test
 
 Make a command run when one or more source files change by prefixing the command with ~. For example, in sbt shell try:
-```bash
+```bash 
 sbt
 > ~ testQuick
 ```
 
 ### Test Driven Development (TDD) - Write a function and its tests that detect climate related sentence
-1. Look at and update "isClimateRelated" to add one more test `test/scala/ClimateService`
-2. Look at and update "isClimateRelated" function inside `main/scala/com/github/polomarcus/utils/ClimateService`
+1. Look at and update the function called "isClimateRelated" to add one more test `test/scala/ClimateServiceTest`
+2. Look at and update  the function called "isClimateRelated" inside `main/scala/com/github/polomarcus/utils/ClimateService`
+3. To see if your code works, run `testOnly ClimateServiceTest -- -z isClimateRelated`
 
 ### Write a function that use `Option[T]` to handle CO2 Record
-With data coming from Hawaii about CO2 concentration in the atmosphere, iterate over it and find the difference between the max and the min value.
+With data coming from Hawaii about CO2 concentration in the atmosphere (they are stored inside the function "getCO2RawDataFromHawaii()", iterate over it and find the difference between the max and the min value.
 
 1. Look at and update "parseRawData" to add one more test `test/scala/ClimateService`
 2. Look at and update "parseRawData" function inside `main/scala/com/github/polomarcus/utils/ClimateService`
 3. Create your own function to find the min, max value. Write unit tests and run `sbt test`
-Tips:
+
+**Tips**:
 * Use scala API to get max and min from a list : https://www.w3resource.com/scala-exercises/list/scala-list-exercise-6.php
 * You can also use "reduce functions" such as `foldLeft` : https://alvinalexander.com/scala/how-to-walk-scala-collections-reduceleft-foldright-cookbook/
+
 4. Create your own function to find the min, max value for a specific year. Write unit tests
-Tips: 
+**Tips:** 
 * Re use `getMinMax` to create this function :
 5. Create your own function to difference between the max and the min. Write unit tests
 
@@ -89,7 +93,7 @@ Estimate CO2 levels for 2050 based on past data.
 Tips: Batch processing / Stream processing ? 
 
 ### Continuous Integration (CI)
-If it works on your machine, congrats !
+If it works on your machine, congrats ! But remember, engineers have to work as team and to be sure it works on others' machines, you have to do something more.
 
 Test it on a remote servers now thanks to a Continuous Integration (CI) system such as [GitHub Actions](https://github.com/features/actions) :
 

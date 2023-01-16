@@ -1,97 +1,57 @@
-# Practices - Data engineering
-
-Have a stackoverflow account : https://stackoverflow.com/
-
-Have a github account : https://github.com/
-
-And a github repo to push your code.
-
-## Fork the repo on your own Github account
-* https://github.com/polomarcus/tp/fork
-
-## Docker and Compose
-Take time to read and install
-
-https://docs.docker.com/get-started/overview/
-```
-docker --version
-Docker version 20.10.14
-```
-
-https://docs.docker.com/compose/
-```
-docker-compose --version
-docker-compose version 1.29.2
-```
-
-
-## TP1 - [Apache Kafka](https://kafka.apache.org/)
+## TP - [Apache Kafka](https://kafka.apache.org/)
 ### Communication problems
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_complex.png)
 
-
 ### Why Kafka ?
-https://kafka.apache.org/documentation/#introduction
-
-Answer these questions with what you can find on the documentation :
-
-- What problems does Kafka solve ?
-
-- Which use cases ?
-
-- What is a producer ?
-
-- What is a consumer ?
-
-- What are consumer groups ?
-
-- What is a offset ?
-
-- Why using partitions ? 
-
-- Why using replication ?
-
-- What are  In-Sync Replicas (ISR) ?
-
 
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_simple.png)
 
-### Try to install Kafka without docker
-https://kafka.apache.org/documentation/#gettingStarted
+### Use Kafka with docker
+Start multiples kakfa servers (called brokers) using the docker compose recipe `docker-compose.yml` : 
 
-### Use kafka with docker
-Start multiples kakfa servers (called brokers) by downloading a docker compose recipe : 
-* https://github.com/conduktor/kafka-stack-docker-compose#single-zookeeper--multiple-kafka
+```bash
+docker-compose -f docker-compose up --detached
+```
 
 Check on the docker hub the image used : 
 * https://hub.docker.com/r/confluentinc/cp-kafka
-
 
 ### Verify
 ```
 docker ps
 CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS         PORTS                                                                                  NAMES
-b015e1d06372   confluentinc/cp-kafka:7.0.1       "/etc/confluent/dock…"   10 seconds ago   Up 9 seconds   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp, 0.0.0.0:9999->9999/tcp, :::9999->9999/tcp   kafka1
+b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 seconds ago   Up 9 seconds   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp, 0.0.0.0:9999->9999/tcp, :::9999->9999/tcp   kafka1
 (...)
 ```
 
-### Getting started with Kafka
+### Kafka User Interface - Conduktor
+Download and install : https://www.conduktor.io/download/
+
+0. Using Conduktor, create a topic "mytopic"
+1. Find the `lyrics` topic
+2. Read the first 10 messages of this topic
+3. Using Conduktor, Produce 3 messages into it
+
+### Produce messages using a Scala Client
+
+### Consume messages using a Scala client
+
+
+#### Command CLI
 1. Connect to your kafka cluster with 2 command-line-interface (CLI)
 
 Using [Docker exec](https://docs.docker.com/engine/reference/commandline/exec/#description)
 
 ```
-docker exec -ti my_kafka_container_name bash
+docker exec -ti tp-docker-kafka_kafka1_1 bash
 > pwd
 ```
 
 ```
-> kafka-topics 
-# will give you help to use this command
-> kafka-topics --describe --bootstrap-server localhost:9092 
-# will give you an error
+> kafka-topics # to get help on this command
+# To list all topic you can use :
+> kafka-topics --describe --bootstrap-server localhost:19092
 ```
-Read this blog article to fix `Broker may not be available.` error : https://rmoff.net/2018/08/02/kafka-listeners-explained/
 
 Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose file.
 
