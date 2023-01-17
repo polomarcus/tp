@@ -32,19 +32,19 @@ docker-compose version 1.29.2 (example)
 * https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork
 
 ## TP - Functional programming for data engineering
-* Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/tp-functional-programming-scala)
+* Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-functional-programming-scala)
 
 ## TP - Functional programming for data engineering
-* Open [tp-data-processing-framework](https://github.com/polomarcus/tp/tree/main/tp-data-processing-framework)
+* Open [tp-data-processing-framework](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-data-processing-framework)
 
 ## TP - Batch with Spark and BI with metabase
-* Open [tp-bi-spark-framework](https://github.com/polomarcus/tp/tree/main/tp-bi-spark-framework)
+* Open [tp-bi-spark-framework](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-bi-spark-framework)
 
 ## TP - Getting started with Apache Kafka (Bash/Docker)
-* Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/tp-docker-kafka-bash)
+* Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka-bash)
 
 ## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/tp-kafka-api)
+* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-kafka-api)
 
 ## TP - [Apache Kafka - Spark Structured Streaming](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/tp-spark-structured-stream-kafka)
+* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-spark-structured-stream-kafka)
