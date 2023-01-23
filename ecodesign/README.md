@@ -19,5 +19,8 @@ Les 8 thématiques :
 * Backend :  Ensemble des composants en opération côté serveur pour permettre le fonctionnement d'un service numérique.
 * Hébergement : Moyens mis en œuvre côté serveur pour permettre l'utilisation d'un service numérique.
 
+## De l'aide
+Vous trouverez dans les différents dossiers de ce répertoire quelques liens utiles selon certaines thématiques.
+
 ## Rendu / Présentation
 Le résultat sera sous format d'une présentation à la classe avec un maximum d'exemples marquant pour que chacun puisse découvrir les autres thématiques selon votre point de vue (c'est le [principe d'arpentage](https://la-trouvaille.org/arpentage/))
