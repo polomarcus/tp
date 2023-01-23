@@ -1,4 +1,6 @@
-# Practices - Data engineering
+# Practical work 
+* [Data engineering / distributed systems](https://github.com/polomarcus/tp/tree/main/data-engineering)
+* [Ecodesign](https://github.com/polomarcus/tp/tree/main/ecodesign)
 
 ## Tools you need
 Have a stackoverflow account : https://stackoverflow.com/
@@ -15,13 +17,13 @@ Take time to read and install
 https://docs.docker.com/get-started/overview/
 ```
 docker --version
-Docker version 20.10.14 (example)
+Docker version XX.XX.XX
 ```
 
 https://docs.docker.com/compose/
 ```
-docker-compose --version
-docker-compose version 1.29.2 (example)
+docker-compose --version # Or docker compose --version
+docker-compose version X.XX.X
 ```
 
 ### Fork OR update the repo on your own Github account
@@ -30,21 +32,3 @@ docker-compose version 1.29.2 (example)
 
 #### Update your fork
 * https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork
-
-## TP - Functional programming for data engineering
-* Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-functional-programming-scala)
-
-## TP - Functional programming for data engineering
-* Open [tp-data-processing-framework](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-data-processing-framework)
-
-## TP - Batch with Spark and BI with metabase
-* Open [tp-bi-spark-framework](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-bi-spark-framework)
-
-## TP - Getting started with Apache Kafka (Bash/Docker)
-* Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka-bash)
-
-## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-kafka-api)
-
-## TP - [Apache Kafka - Spark Structured Streaming](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-spark-structured-stream-kafka)
