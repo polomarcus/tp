@@ -38,21 +38,27 @@ object ClimateService {
    */
   def filterDecemberData(list: List[Option[CO2Record]]) : List[CO2Record] = ???
 
+
   /**
+   * **Tips**: look at the read me to find some tips for this function
+   */
+  def getMinMax(list: List[CO2Record]) : (Double, Double) = ???
+
+  def getMinMaxByYear(list: List[CO2Record], year: Int) : (Double, Double) = ???
+
+  /**
+   * use this function side src/main/scala/com/polomarcus/main/Main (with sbt run)
    * display every item on the list using the CO2Record's "show" function
    *
    * Bonus: for quality check : count how many None values we have
+   *
    * @param list
    */
-  def showCO2Data(list: List[Option[CO2Record]]) : Unit = {
+  def showCO2Data(list: List[Option[CO2Record]]): Unit = {
     logger.info("Call ClimateService.filterDecemberData here")
 
     logger.info("Call record.show function here inside a map function")
   }
-
-  def getMinMax(list: List[CO2Record]) : (Double, Double) = ???
-
-  def getMinMaxByYear(list: List[CO2Record], year: Int) : (Double, Double) = ???
 
   /**
    * CO2 record from 1958 to 2022
