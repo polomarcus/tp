@@ -67,6 +67,6 @@ object NewsService {
    */
   def getNumberOfNews(dataset: Dataset[News]): Long = {
     //@TODO look a the Spark API to know how to count
-    return 1
+    return 1 // code here
   }
 }

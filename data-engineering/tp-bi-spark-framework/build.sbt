@@ -1,4 +1,4 @@
-name := "TP EPF - BI"
+name := "TP - BI"
 organization := "com.github.polomarcus"
 
 version := "1.0"

@@ -19,7 +19,7 @@ object Main {
     // Read a JSON data source with the path "./data-news-json"
     // Tips : https://spark.apache.org/docs/latest/sql-data-sources-json.html
     val pathToJsonData = "./data-news-json/"
-    val newsDataframe: DataFrame = ???
+    val newsDataframe: DataFrame = ??? //@TODO
 
     // To type our dataframe as News, we can use the Dataset API : https://spark.apache.org/docs/latest/sql-getting-started.html#creating-datasets
     val newsDatasets: Dataset[News] = NewsService.read(pathToJsonData)

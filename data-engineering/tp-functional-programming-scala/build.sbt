@@ -1,4 +1,4 @@
-name := "TP EPF"
+name := "TP"
 organization := "com.github.polomarcus"
 
 version := "1.0"

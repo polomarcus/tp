@@ -1,6 +1,6 @@
 # Practices - Data engineering
 
-## TP3 - Data processing with Apache Spark
+## TP - Data processing with Apache Spark
 To process a large amount of data partitioned on a data lake, you can use data processing frameworks such as Apache Spark :
 1. Read : https://spark.apache.org/docs/latest/sql-programming-guide.html
 
