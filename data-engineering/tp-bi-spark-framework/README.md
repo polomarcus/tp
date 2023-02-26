@@ -14,6 +14,7 @@ Need help for Postgres or JDBC ?
 0. Check out the `docker-compose.yml` file to see what services you are going to use
 1. Look at `src/main/scala/com.github.polomarcus/main/Main` 
 2. Write code for `src/main/scala/com.github.polomarcus/utils/PostgresService`
+3. start all services with docker : `docker compose up`
 3. Execute your code with `sbt run` and see if you have no errors
 
 ### BI : Use Metabase to explore data
