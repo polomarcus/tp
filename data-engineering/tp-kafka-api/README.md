@@ -41,7 +41,7 @@ Questions:
 ### Kafka Client
 Instead of using the command line interface (CLI) or Conduktor to produce and consume, we are going to code our first app.
 
-Replace `???` and `//@TODO` inside `main` and `utils` folders
+Replace `???` and `//@TODO` inside `src/scala/main/com.github.polomarcus/main` and `src/scala/main/com.github.polomarcus/utils` folders
 
 #### Producer
 Using the `scala/com.github.polomarcus/utis/KafkaProducerService`, send messages to Kafka and **read them with Conduktor**
