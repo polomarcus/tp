@@ -31,9 +31,9 @@ object KafkaConsumerService {
   val consumer = new KafkaConsumer[String, String](props)
   val topicToRead = List(topic).asJava
 
-  //@TODO we need to connect our consumer to our topic by **subscribing** it
+  //@TODO we need to connect our consumer to our topic by **subscribing** it, tips : https://www.oreilly.com/library/view/kafka-the-definitive/9781491936153/ch04.html#idm45788273579960
   ???
-
+  
   def consume() = {
     try {
       for (i <- 0 to 20)  { // to avoid a while(true) loop

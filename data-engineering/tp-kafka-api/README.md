@@ -83,14 +83,15 @@ After a while and a lot of deployments and autoscaling (adding and removing due 
 * [ ] what is ["min.insync.replicas"](https://kafka.apache.org/documentation/#brokerconfigs_min.insync.replicas) ?
 
 #### Consumer
-The goal is to read messages from our producer thanks to the "KafkaConsumerService" class.
+The goal is to read messages from our producer thanks to the ["KafkaConsumerService" class](https://github.com/polomarcus/tp/blob/main/data-engineering/tp-kafka-api/src/main/scala/com/github/polomarcus/utils/KafkaConsumerService.scala#L34-L35).
 
 To run your program
-```aidl
-sbt "runMain MainKafkaConsumer"
+```bash
+sbt "runMain com.github.polomarcus.main.MainKafkaConsumer"
+> scala.NotImplementedError: an implementation is missing --> modify the `utils/KafkaConsumerService` class
 ```
 
-You should see messages being read.
+[After modifying the code here](https://github.com/polomarcus/tp/blob/main/data-engineering/tp-kafka-api/src/main/scala/com/github/polomarcus/utils/KafkaConsumerService.scala#L34-L35), you should see messages being read on your terminal.
 
 Open Conduktor to the "Consumers" tab and look what information you can get.
 
