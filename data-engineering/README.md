@@ -1,3 +1,5 @@
+With IntelliJ "File -> Open" and **select only** one folder from the list below :
+
 
 ## TP - Functional programming with Scala
 * Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-functional-programming-scala)
