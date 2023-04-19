@@ -12,7 +12,7 @@
 * Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka-bash)
 
 ## TP - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-kafka-api)
+* Open [tp-kafka-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-kafka-api)
 
 ## TP - [Apache Kafka - Spark Structured Streaming](https://kafka.apache.org/)
-* Open [tp-docker-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-spark-structured-stream-kafka)
+* Open [tp-spark-structured-stream-kafka](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-spark-structured-stream-kafka)
