@@ -13,7 +13,6 @@ services:
 
   kafka1:
     image: confluentinc/cp-kafka:7.1.3
-    hostname: kafka1
     ports:
       - "9092:9092"
     environment:
@@ -26,32 +25,3 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zoo1
-
-  kafka-schema-registry:
-    image: confluentinc/cp-schema-registry:7.1.3
-    hostname: kafka-schema-registry
-    container_name: kafka-schema-registry
-    ports:
-      - "8081:8081"
-    environment:
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka1:19092
-      SCHEMA_REGISTRY_HOST_NAME: kafka-schema-registry
-      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
-    depends_on:
-      - zoo1
-      - kafka1
-
-  kafka-rest-proxy:
-    image: confluentinc/cp-kafka-rest:7.1.3
-    hostname: kafka-rest-proxy
-    ports:
-      - "8082:8082"
-    environment:
-      # KAFKA_REST_ZOOKEEPER_CONNECT: zoo1:2181
-      KAFKA_REST_LISTENERS: http://0.0.0.0:8082/
-      KAFKA_REST_SCHEMA_REGISTRY_URL: http://kafka-schema-registry:8081/
-      KAFKA_REST_HOST_NAME: kafka-rest-proxy
-      KAFKA_REST_BOOTSTRAP_SERVERS: PLAINTEXT://kafka1:19092
-    depends_on:
-      - zoo1
-      - kafka1
