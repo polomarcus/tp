@@ -3,7 +3,7 @@ set -e
 #### Description: Init kafka with messages
 
 # Init values
-container_name='tp-docker-kafka_kafka1_1'
+container_name='tp-docker-kafka-kafka1-1'
 destination='/home/appuser/'
 topic='lyrics'
 file_name='lyrics.txt'
