@@ -64,23 +64,25 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 5. Send events to a topic on one terminal : https://kafka.apache.org/documentation/#quickstart_send
 4. Keep reading events from a topic from one terminal : https://kafka.apache.org/documentation/#quickstart_consume
 * try the default config
-* what does the `--from-beginning` config do ?
-* what about using the `--group` option for your producer ?
-6. stop reading
-7. Keep sending some messages to the topic
+* what does the `--from-beginning` config do ? What happens when you do not use `--from-beginning` and instead the config `--group` such as --group?
+* Keep reading the message in your terminal and using Conduktor, can you notice something in the **Consumers tab** ? 
+* Now, in your terminal stop your consumer, notice the **lag** inside the Consumer tab on conduktor, it should be **0**
+* With a producer, send message to the same topic, and look at the value of **lag**, what's happening ?
+* Restart your consumer with the same consumer group
+* Trick question : What about using the `--group` option for your producer ?
 
-#### Partition 
+#### Partition - consumer group / bookmark
 1. Check consumer group with `kafka-console-consumer` : https://kafka.apache.org/documentation/#basic_ops_consumer_group
 * notice if there is [lag](https://univalence.io/blog/articles/kafka-et-les-groupes-de-consommateurs/) for your group
 2. read from a new group, what happened ?
 3. read from a already existing group, what happened ?
-4. Recheck consumer group
+4. Recheck consumer group using `kafka-console-consumer`
 
 #### Replication - High Availability
-0. use `docker-compose-multiple-kafka.yml` to start 2 more brokers
+0. use `docker-compose-multiple-kafka.yml` to start 2 more brokers : `docker-compose -f docker-compose-multiple-kafka.yml up`
 1. Create a new topic with a replication factor (RF) of 3, in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
-2. Describe your topic
-3. Stop one of your brokers with docker
+2. Describe your topic, notice where the different partition are replicated 
+3. now, stop one of your brokers with docker
 4. Describe your topic, check and notice the difference with the ISR (in-sync replica) config : https://kafka.apache.org/documentation/#design_ha
 5. Restart your stopped broker
 6. Check again your topic
