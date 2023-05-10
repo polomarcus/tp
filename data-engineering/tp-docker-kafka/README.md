@@ -7,7 +7,7 @@
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_simple.png)
 
 ### Use Kafka with docker
-Start multiples kakfa servers (called brokers) using the docker compose recipe `docker-compose.yml` : 
+Start a kakfa server (called broker) using the docker compose recipe `docker-compose.yml` : 
 
 ```bash
 docker compose up --detach
@@ -27,21 +27,19 @@ b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 s
 ### Kafka User Interface - Conduktor
 Download and install : https://www.conduktor.io/download/
 
-0. Using Conduktor, create a topic "mytopic"
-1. Using Conduktor, Produce 3 messages into it
-2. Using Conduktor, read your 3 messages
-3. (Optional) use `./send-messages-to-kafka.sh` to create a topic with messages called `lyrics`, it should give you :
-```bash
-Copying some messages inside Kafka container
-docker cp lyrics.txt tp-docker-kafka-kafka1-1:/home/appuser/
+Using Conduktor, connect to **your existing docker kafka cluster** with `localhost:9092` and name : "Docker Cluster"
+--> do not click on the blue button "Start local Kafka cluster" but on "New kafka cluster".
 
-Sending messages from lyrics.txt to kafka
-Command Used :
-docker exec tp-docker-kafka-kafka1-1 /bin/sh -c  'kafka-console-producer --broker-list localhost:9092 --topic lyrics < /home/appuser/lyrics.txt'
-[2023-05-10 08:36:29,726] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 1 : {lyrics=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
-Got an error ? Retry it :)
-```
-4. (Optional) Using Conduktor, Read the first 10 messages of this topic `lyrics`
+0. Using Conduktor, create a topic "mytopic" with 5 partitions
+1. Find the `mytopic` topic on Conduktor and its differents configs (ISR, Replication Factor...)
+2. Produce 10 messages (without a key) into it and read them
+3. Look on which topic's partitions they are located.
+4. Send another 10 messages but with a key called "my key"
+5. Look again on which topic's partitions they are located.
+
+Questions:
+* [ ] When should we use a key when producing a message into Kafka ? What are the risks ? [Help](https://stackoverflow.com/a/61912094/3535853)
+* [ ] How does the default partitioner (sticky partition) work with kafka ? [Help1](https://www.confluent.io/fr-fr/blog/apache-kafka-producer-improvements-sticky-partitioner/) and [Help2](https://www.conduktor.io/kafka/producer-default-partitioner-and-sticky-partitioner#Sticky-Partitioner-(Kafka-%E2%89%A5-2.4)-3)
 
 #### Command CLI
 1. Connect to your kafka cluster with 2 command-line-interface (CLI)
@@ -49,7 +47,7 @@ Got an error ? Retry it :)
 Using [Docker exec](https://docs.docker.com/engine/reference/commandline/exec/#description)
 
 ```
-docker exec -ti tp-docker-kafka_kafka1_1 bash
+docker exec -ti tp-docker-kafka-kafka1-1 bash
 > pwd
 ```
 
@@ -80,8 +78,10 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 
 #### Replication - High Availability
 0. use `docker-compose-multiple-kafka.yml` to start 2 more brokers
-1. Increase replication in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
-2. Stop one of your brokers with docker
-3. Describe your topic, check the ISR (in-sync replica) config : https://kafka.apache.org/documentation/#design_ha
-4. Restart your stopped broker
-5. Check again your topic
+1. Create a new topic with a replication factor (RF) of 3, in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
+2. Describe your topic
+3. Stop one of your brokers with docker
+4. Describe your topic, check and notice the difference with the ISR (in-sync replica) config : https://kafka.apache.org/documentation/#design_ha
+5. Restart your stopped broker
+6. Check again your topic
+7. Bonus: you can do this operation while keeping producing message to this kafka topic with Conduktor
