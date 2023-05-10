@@ -79,11 +79,13 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 4. Recheck consumer group using `kafka-console-consumer`
 
 #### Replication - High Availability
-0. use `docker-compose-multiple-kafka.yml` to start 2 more brokers : `docker-compose -f docker-compose-multiple-kafka.yml up`
+0. Stop your broker using `docker compose down` then with `docker-compose-multiple-kafka.yml` to start 3 brokers : `docker-compose -f docker-compose-multiple-kafka.yml up`
 1. Create a new topic with a replication factor (RF) of 3, in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
+* `docker exec -ti tp-docker-kafka-kafka1-1 bash`
+* `kafka-topics --create --replication-factor 3 --topic testreplicated --bootstrap-server localhost:19092`
 2. Describe your topic, notice where the different partition are replicated 
-3. now, stop one of your brokers with docker
+3. now, stop one of your brokers with docker : `docker stop your_container`
 4. Describe your topic, check and notice the difference with the ISR (in-sync replica) config : https://kafka.apache.org/documentation/#design_ha
-5. Restart your stopped broker
+5. Restart your stopped broker:  `docker start your_container`
 6. Check again your topic
-7. Bonus: you can do this operation while keeping producing message to this kafka topic with Conduktor
+7. Bonus: you can do this operation while keeping producing message to this kafka topic with your command line
