@@ -32,11 +32,6 @@ Download and install : https://www.conduktor.io/download/
 2. Read the first 10 messages of this topic
 3. Using Conduktor, Produce 3 messages into it
 
-### Produce messages using a Scala Client
-
-### Consume messages using a Scala client
-
-
 #### Command CLI
 1. Connect to your kafka cluster with 2 command-line-interface (CLI)
 
