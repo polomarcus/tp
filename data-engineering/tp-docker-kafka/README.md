@@ -28,9 +28,20 @@ b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 s
 Download and install : https://www.conduktor.io/download/
 
 0. Using Conduktor, create a topic "mytopic"
-1. Find the `lyrics` topic
-2. Read the first 10 messages of this topic
-3. Using Conduktor, Produce 3 messages into it
+1. Using Conduktor, Produce 3 messages into it
+2. Using Conduktor, read your 3 messages
+3. (Optional) use `./send-messages-to-kafka.sh` to create a topic with messages called `lyrics`, it should give you :
+```bash
+Copying some messages inside Kafka container
+docker cp lyrics.txt tp-docker-kafka-kafka1-1:/home/appuser/
+
+Sending messages from lyrics.txt to kafka
+Command Used :
+docker exec tp-docker-kafka-kafka1-1 /bin/sh -c  'kafka-console-producer --broker-list localhost:9092 --topic lyrics < /home/appuser/lyrics.txt'
+[2023-05-10 08:36:29,726] WARN [Producer clientId=console-producer] Error while fetching metadata with correlation id 1 : {lyrics=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient)
+Got an error ? Retry it :)
+```
+4. (Optional) Using Conduktor, Read the first 10 messages of this topic `lyrics`
 
 #### Command CLI
 1. Connect to your kafka cluster with 2 command-line-interface (CLI)
