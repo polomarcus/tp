@@ -59,6 +59,9 @@ Update your CI to use your service `my-scala-app` with docker
 
 Every commit on a branch should start a CI job to run test : `sbt test`
 
+### Step 6 - code coverage on the CI
+Add the coverage information on your CI and pull request meta data.
+
 ## Closer to a real project
 ### Add a database
 You would like to save some data, so you decide to use a database. Instead of downloading the ZIP file, you will use your docker-compose file
