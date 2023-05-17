@@ -4,6 +4,7 @@ organization := "com.github.polomarcus"
 version := "1.0"
 scalaVersion := "2.13.10"
 mainClass / run := Some("com.github.polomarcus.main.Main")
+coverageEnabled := true
 
 val scalaTest = "3.2.12"
 val sparkVersion = "3.4.0"

@@ -54,7 +54,7 @@ object NewsService {
    */
   def filterNews(newsDataset: Dataset[News]) : Dataset[News] = {
     newsDataset.filter { news =>
-      ??? //@TODO complete here
+      false //@TODO complete here
     }
   }
 

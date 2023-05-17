@@ -40,6 +40,19 @@ docker compose run YOUR_SERVICE_NAME bash # connect to your container to access 
 ```
 
 ### Step 4 - a test coverage
+How can you be sure that you have not forgotten some parts of the code to test ? 
+
+You know that you can generate those kind of reports thanks to [sbt coverage](https://github.com/scoverage/sbt-scoverage#usage)
+
+```bash
+sbt clean coverage test
+sbt coverageReport
+```
+
+Coverage reports will be in your target/scala-<scala-version>/scoverage-report directory. There are HTML and XML reports. The XML is useful if you need to programatically use the results, or if you're writing a tool.
+
+Open in your web browser the report, and see what you can do better and what is your code coverage percentage :
+* tp/data-engineering/tp-cooperation/target/scala-2.13/scoverage-report/index.html
 
 ### Step 5 - Docker on the CI
 Update your CI to use your service `my-scala-app` with docker
