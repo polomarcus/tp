@@ -2,7 +2,7 @@
 Your service displays the latest tv news about drought (contained inside the file `drought-tv-news.csv`)
 
 
-## Team work
+## Organize your repo and team work
 ### Issue and Pull request
 You've received some Issues on your github repo, but they were messy and you had to clarify multiples things before understanding the problem.
 
@@ -11,9 +11,9 @@ Thanks to this, you have decided to create a template to structure issues receiv
 * create a **pull request template** on your repo
 Find out how to make this here : https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates
 
-After you've pushed your changes, create a issue on your repo or somebody else's repo.
+After you've pushed your changes, [create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue) on your repo or somebody else's repo.
 
-Make some changes and create a pull request on somebody else's repo.
+Make some changes and [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) on somebody else's repo.
 
 ## Dockerize your project
 Some of your colleagues use a different Operating System than yours, or does not have Scala Build Tool (SBT) installed, so you decide to use Docker.
@@ -66,8 +66,8 @@ Add the coverage information on your CI and pull request meta data.
 ### Add a database
 You would like to save some data, so you decide to use a database. Instead of downloading the ZIP file, you will use your docker-compose file
 * Start [PostgresSQL](https://hub.docker.com/_/postgres)
-* Code a function that save a name
-* Write a test this function
+* Code a function that save a news
+* Write a test this function and run it locally
 * Run this test on the CI
 
 ### Create a website
