@@ -10,6 +10,12 @@ Have a github account : https://github.com/
 ### A Scala IDE :
 1. Intellij Idea: https://www.jetbrains.com/fr-fr/idea/download
 2. Scala plugin : https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html
+3. Open Intellij and [set up the scala SDK and JDK](https://www.jetbrains.com/help/idea/sdk.html)  
+
+**Beware** : For Spark code, we have to use **Java 17** (JDK17) or inferior, otherwise you'll have [this error](https://stackoverflow.com/a/73349341/3535853) : 
+```
+Extracting Structure Failed
+```
 
 ### Docker and Compose
 Take time to read and install
