@@ -1,0 +1,7 @@
+version:
+services:
+  my-scala-app:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/tp
