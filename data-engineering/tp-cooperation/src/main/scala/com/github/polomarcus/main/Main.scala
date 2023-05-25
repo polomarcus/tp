@@ -10,6 +10,7 @@ object Main {
     val logger = Logger(this.getClass)
     logger.info("Used `sbt run` to start the app")
 
+    // modification du fichier
     // This is our Spark starting point
     // Open file "src/main/scala/utils/SparkService.scala"
     // Read more about it here : https://spark.apache.org/docs/latest/sql-getting-started.html#starting-point-sparksession

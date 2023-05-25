@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+ run:
+  working-directory: ./data-engineering/tp-cooperation
+
 jobs:
   run-my-tests:
     runs-on: ubuntu-latest
