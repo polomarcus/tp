@@ -15,6 +15,9 @@ After you've pushed your changes, [create an issue](https://docs.github.com/en/i
 
 Make some changes and [create a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) on somebody else's repo.
 
+### Add someone to your repo
+It's not fun to code alone, add one or 2 persons as collaborators of your repo
+
 ## Dockerize your project
 Some of your colleagues use a different Operating System than yours, or does not have Scala Build Tool (SBT) installed, so you decide to use Docker.
 
@@ -58,6 +61,8 @@ Open in your web browser the report, and see what you can do better and what is 
 Update your CI to use your service `my-scala-app` with docker
 
 Every commit on a branch should start a CI job to run test : `sbt test`
+
+You can find [help for this step here](https://github.com/polomarcus/tp/issues/2#issuecomment-1562833864)
 
 ### Step 6 - code coverage on the CI
 Add the coverage information on your CI and pull request meta data.
