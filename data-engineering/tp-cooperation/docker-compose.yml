@@ -1,0 +1,8 @@
+services:
+tp-coop:
+build:
+context: ./
+dockerfile: dockerfile
+volume
+
+- ./:/usr/tp # pointe sur le  
