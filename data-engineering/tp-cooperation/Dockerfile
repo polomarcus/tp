@@ -1,7 +1,7 @@
-FROM sbtscala/scala-sbt:graalvm-ce-22.3.0-b2-java17_1.8.3_3.2.2
+FROM FROM sbtscala/scala-sbt:eclipse-temurin-jammy-11.0.17_8_1.8.3_2.13.10
 
 WORKDIR /usr/tp
 
-# COPY . .
+COPY . .
 
 CMD ["sbt", "test"]
