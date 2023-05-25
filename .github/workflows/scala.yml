@@ -2,9 +2,6 @@ name: Scala CI
 
 on:
   push:
-    paths:
-      - 'src/**'
-  pull_request:
     branches: [ main ]
 
 defaults:
