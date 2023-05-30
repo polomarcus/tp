@@ -9,3 +9,5 @@ project/project
 .metals/
 .cache
 **/.cache
+.DS_Store
+**/.DS_Store
