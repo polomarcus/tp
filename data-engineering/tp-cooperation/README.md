@@ -83,7 +83,7 @@ You would like to save some data, so you decide to use a database. Instead of do
 
 ## Functional tests
 After you've watched [this video](https://www.youtube.com/watch?v=0GypdsJulKE), you have decided to write functional tests (end to end).
-You've heard of [Cypress](https://www.cypress.io/), that simulate a browser and users actions to test a website.
+You've heard of [Cypress](https://www.cypress.io/) (Javascript) or [Selenium](https://www.selenium.dev/) (Python/java), that simulate a browser and users actions to test a website.
 
 ## How to test a lot of different devices ?
 Your service is now used by a lot of users, and by a lot of different devices. The thing is you can not test all devices, or by wasting a lot of time.
