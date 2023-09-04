@@ -7,7 +7,7 @@
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_simple.png)
 
 ### Use Kafka with docker
-Start multiples kakfa servers (called brokers) using the docker compose recipe `docker-compose.yml` :
+Start multiples kafka servers (called brokers) using the docker compose recipe `docker-compose.yml` :
 
 ```bash
 docker-compose -f docker-compose.yml up --detached
@@ -49,7 +49,7 @@ Using the `scala/com.github.polomarcus/utis/KafkaProducerService`, send messages
 Questions :
 * What are serializers (and deserializers) ? What is the one used here ? Why use them ?
 
-#### To run your program 
+#### To run your program with SBT or Docker
 ```bash
 sbt "runMain com.github.polomarcus.main.MainKafkaProducer"
 # OR
@@ -57,7 +57,7 @@ sbt run
 # and type "2" to run "com.github.polomarcus.main.MainKafkaProducer"
 
 # OR
-docker-compose run my-scala-app bash
+docker compose run my-scala-app bash
 > sbt
 > run
 ```
@@ -151,25 +151,28 @@ One has already being installed via docker-compose.yml, can you spot it ?
 This File Sink connector read from a topic, and write it as a file on your local machine.
 
 ##### How to start a connector ?
-For tests purposes, we are going to use the [Standalone run mode](https://docs.confluent.io/kafka-connectors/self-managed/userguide.html#standalone-mode)
+For tests purposes, we are going to use the [Standalone run mode](https://docs.confluent.io/kafka-connectors/self-managed/userguide.html#standalone-mode) as we do not have a cluster.
 
-In order to run a [FileStream connector](https://docs.confluent.io/platform/current/connect/filestream_connector.html#kconnect-long-filestream-connectors), to read from our topics set inside the `kafka-connect-configs/connect-file-sink-properties`
+We'll run a [FileStream connector](https://docs.confluent.io/platform/current/connect/filestream_connector.html#kconnect-long-filestream-connectors) - a connector that read from a topic and write it as a text file on our server.
 
+To read from a specific topic, we need to configure this file [`kafka-connect-configs/connect-file-sink-properties`](https://github.com/polomarcus/tp/blob/main/data-engineering/tp-kafka-api/kafka-connect-configs/connect-file-sink.properties)
+
+To run our FileStream connector we can operate like this (have a look to the docker-compose.yml file to understand first)
 ```bash
-docker-compose run kafka-connect bash
+docker compose run kafka-connect bash
 > ls
 > cat connect-file-sink.properties
 > connect-standalone connect-standalone.properties connect-file-sink.properties
 ```
 
-A file should have been produced on your local container
+Congrats, a file **should** have been produced on your **local** container :
 ```bash
 ls 
 cat test.sink.txt
 ```
 
-**How can we use this kind of connector for a production use ?** 
-* [ ] Can we find another connector [on the Confluent Hub](https://www.confluent.io/hub/) that can write inside a data lake ?
+**How can we use this kind of connector for a production use ( = real life cases ) ?** 
+* [ ] Can we find another connector [on the Confluent Hub](https://www.confluent.io/hub/) that can write inside **a data lake** instead of a simple text file in one of our servers ?
 
 ##### How do Serializers work for Kafka connect ?
 Inside `kafka-connect-config/connect-file-sink.properties`, we need to set the serializer we used to produce the data, for our case we want to use the **String Serializer** inside our config.
@@ -186,7 +189,7 @@ Look on Conduktor to see if a Connector use a consumer group to bookmark partiti
 
 * [ ] What are the differences between the consumer, the producer APIs, and Kafka streams ? [Help1](https://stackoverflow.com/a/44041420/3535853)
 * [ ] When to use Kafka Streams instead of the consumer API ?
-* [ ] What is a `Serde`?
+* [ ] What is a `SerDe`?
 * [ ] What is a KStream?
 * [ ] What is a KTable? What is a compacted topic ?
 * [ ] What is a GlobalKTable?
@@ -196,9 +199,9 @@ What are the new [configs](https://kafka.apache.org/documentation/#streamsconfig
 
 
 ##### Code
-[!MapReduce](http://coderscat.com/images/2020_09_10_understanding-map-reduce.org_20200918_164359.png)
+![MapReduce](http://coderscat.com/images/2020_09_10_understanding-map-reduce.org_20200918_164359.png)
 
-We are going to aggregate (count) how many times we receive the same word inside the topic ConfService.TOPIC_OUT. For this we need to `map` every message to separate every words.
+We are going to aggregate (count) how many times we receive the same word inside the topic [ConfService.TOPIC_OUT](https://github.com/polomarcus/tp/blob/main/data-engineering/tp-kafka-api/src/main/scala/com/github/polomarcus/conf/ConfService.scala#L8). For this we need to `map` every message to separate every words.
 
 After this, we are going to filter any messages that contains `"filter"`
 
