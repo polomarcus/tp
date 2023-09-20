@@ -38,3 +38,5 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zoo1
+    volumes:
+      - ./news.txt/:/home/appuser/news.txt

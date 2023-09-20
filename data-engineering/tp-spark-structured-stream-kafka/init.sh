@@ -14,8 +14,9 @@ kafka_server='kafka1:19092'
 docker-compose -f docker-compose.yml up -d
 sleep 3
 
-echo -e "\nCopying some messages inside Kafka container"
-docker cp $file_name $container_name:$destination
+echo -e "\nAre there news inside the kafka broker ? cat /home/appuser/news.txt "
+docker exec $container_name /bin/sh -c 'cat /home/appuser/news.txt'
+
 echo -e "\nSending messages to kafka"
 echo 'kafka-console-producer --broker-list ' $kafka_server ' --topic '$topic
 docker exec $container_name /bin/sh -c 'kafka-console-producer --broker-list '$kafka_server' --topic '$topic' < '$destination$file_name
