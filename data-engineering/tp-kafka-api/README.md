@@ -10,7 +10,7 @@
 Start multiples kafka servers (called brokers) using the docker compose recipe `docker-compose.yml` :
 
 ```bash
-docker-compose -f docker-compose.yml up --detached
+docker compose -f docker-compose.yml up --detach
 ```
 Check on the docker hub the image used :
 * https://hub.docker.com/r/confluentinc/cp-kafka
