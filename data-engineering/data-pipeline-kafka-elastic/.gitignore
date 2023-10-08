@@ -1,0 +1,12 @@
+*.class
+*.log
+target/
+.idea/
+.vscode/
+.metals/
+.bsp
+project/target
+project/project
+.cache
+connectors
+kafka-connect-config
