@@ -15,7 +15,7 @@ What we can argue against a solution without Kafka that deals their data directl
 Some friends are Ippon talks about [event-drivent architure.](https://blog.ippon.fr/2021/06/29/comment-se-lancer-avec-kafka-partie-1/)
  
 ## 1. But First ! Let's discover Elastic and Kibana 
-Try Elastic and Kibana, by importing data from TV news that you can find here : https://github.com/polomarcus/television-news-analyser/tree/main/data-news-gargantext-tsv/year%3D2023
+Try Elastic and Kibana, by importing data from TV news that you can find here : https://github.com/polomarcus/television-news-analyser/tree/main/data-news-gargantext-tsv/year%3D2023](https://github.com/polomarcus/television-news-analyser/blob/main/data-news-csv/year%3D2023
 ```bash
 
 ```
