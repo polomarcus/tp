@@ -1,4 +1,5 @@
 # Eco-conception des services numériques
+[Les diapositives pour introduire le sujet sont ici.](https://docs.google.com/presentation/d/1JlHG6yB2ra9kVxwERDb8FRoaDucQDOzcKX2CQ7S7UHU/edit?usp=sharing)
 ## Prendre en compte les limites physiques
 
 Vous êtes une équipe de développeurs, UX/UI, data engineers et scientists travaillant sur une solution d’analyse de données venant des différentes sites de production et la consommation d'électricité en France, Réseau Transport Electrique (ou RTE).
