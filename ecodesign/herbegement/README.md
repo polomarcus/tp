@@ -3,6 +3,9 @@
 * Consulter [electricity map](https://app.electricitymaps.com/map) et identifier les pays avec une énergie peu carbonée
 * [AWS buys 100+ diesel generators... and that's just for Irish datacenters](https://www.theregister.com/2022/10/24/aws_irish_datacenter_diesel/)
 
+## Comprendre que les datacenters utilisent de l'energie et de l'eau
+A l'aide de ce site de l'hébergeur Scaleway, vous pouvez voir leur consommation en energie (PUE) et en eau (WUE) :
+* https://www.scaleway.com/fr/leadership-environnemental/
 
 # Des cloud providers sans impact ?
 En lisant ou parcourant ces 2 phrases et articles
