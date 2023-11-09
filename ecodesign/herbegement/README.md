@@ -7,6 +7,9 @@
 A l'aide de ce site de l'hébergeur Scaleway, vous pouvez voir leur consommation en energie (PUE) et en eau (WUE) :
 * https://www.scaleway.com/fr/leadership-environnemental/
 
+Vous pouvez comparer ces valeurs avec ceux de Google Cloud Platform et conclure des choses :
+* https://www.google.com/intl/fr/about/datacenters/efficiency/
+
 # Des cloud providers sans impact ?
 En lisant ou parcourant ces 2 phrases et articles
 “Nous misons tout sur nos objectifs et nos actions pour construire une planète plus belle.” - [Amazon Web Services : la neutralité carbone d’ici 2040](https://www.aboutamazon.fr/engagements/nous-misons-tout-sur-le-climate-pledge-la-neutralit%C3%A9-carbone-dici-2040 )
