@@ -1,6 +1,7 @@
 # Hébergement / Hosting
 ## Comprendre le mix électrique par pays 
-* Consulter [electricity map](https://app.electricitymaps.com/map) et identifier les pays avec une énergie peu carbonée
+* Consulter [electricity map](https://app.electricitymaps.com/map) et **identifier les pays avec une énergie peu carbonée**
+* Voir que l'intensité carbone change selon l'horaire et comment certains cloud provider s'en servent : https://cloud.google.com/sustainability/region-carbon
 * [AWS buys 100+ diesel generators... and that's just for Irish datacenters](https://www.theregister.com/2022/10/24/aws_irish_datacenter_diesel/)
 
 ## Comprendre que les datacenters utilisent de l'energie et de l'eau
