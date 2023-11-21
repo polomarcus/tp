@@ -25,3 +25,7 @@ Vous trouverez dans les différents dossiers de ce répertoire quelques liens ut
 
 ## Rendu / Présentation
 Le résultat sera sous format d'une présentation à la classe avec un maximum d'exemples marquant pour que chacun puisse découvrir les autres thématiques selon votre point de vue (c'est le [principe d'arpentage](https://la-trouvaille.org/arpentage/))
+
+## Questionnaire final
+
+[Lien vers le questionnaire](https://techologie.net/extra/jeu-ecoconception/) de 16 questions
