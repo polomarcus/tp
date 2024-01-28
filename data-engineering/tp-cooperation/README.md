@@ -70,7 +70,7 @@ You can find [help for this step here](https://github.com/polomarcus/tp/issues/2
 Add the coverage information on your CI and pull request meta data.
 
 ### Step 7 - log management - système de log
-
+Use a free account from NewRelic, Datadog or Sentry to set up a log management system to be alerted when something goes wrong for your application.
 
 ## Closer to a real project
 
