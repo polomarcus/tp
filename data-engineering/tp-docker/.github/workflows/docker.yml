@@ -1,0 +1,14 @@
+on:
+  push:
+  workflow_dispatch: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: init and load data
+        run: docker-compose -f docker-compose.yml up -d
+      - name: sleep
+        run:  sleep 120
+      - name: log
+        run: docker logs jupyter
