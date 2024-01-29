@@ -1,5 +1,5 @@
 # Docker and Compose 
-You are going to start a [jupyter lab notebook](https://jupyter.org/install), to explore some data ([news from french TV of 2022](https://github.com/polomarcus/television-news-analyser/blob/main/data-news-csv/year%3D2022/part-00000-d964c139-19ed-47cf-b389-49b1f624aa7c.c000.csv.gz)) and save it to a Postgresql database.
+You are going to start a [jupyter lab notebook](https://jupyter.org/install) via Docker, to explore some data ([news from french TV of 2022](https://github.com/polomarcus/television-news-analyser/blob/main/data-news-csv/year%3D2022/part-00000-d964c139-19ed-47cf-b389-49b1f624aa7c.c000.csv.gz)) and save it to a Postgresql database.
 
 
 ## Dockerize your project
@@ -12,11 +12,13 @@ No joke, read [this article](https://www.epauler.fr/article/simplify-your-tests-
 Inside the article you've just read (i hope), you find this article [10 docker-compose and docker commands that are useful for active development](https://dev.to/aduranil/10-docker-compose-and-docker-commands-that-are-useful-for-active-development-22f9) and it's going to be useful for what comes next.
 
 ### Step 1 - Start
-As many co-workers use different systems, you want to avoid errors such as "it works on my machine, but not yours" and you decide to use [Docker](https://docs.docker.com/build/).
+As many co-workers use different systems, you want to avoid errors such as "it works on my machine, but not yours" and you decide to use [Docker (click to see install link)](https://docs.docker.com/build/).
 
-So you will not install jupyter via `pip install jupyterlab` (or use the installed one if you have it already), but you are going to follow this blog post, [Jupyter notebook development workspace using Docker, Docker Compose and Git](https://nezhar.com/blog/jupyter-notebook-development-workspace-using-docker-and-git), to :
+If you are on Windows, you might have to [install WSL and follow this guide.](https://forums.docker.com/t/an-unexpected-error-was-encountered-while-executing-a-wsl-command/137525/40)
 
-* Create a docker-compose.yml file
+So you will **NOT** install jupyter via `pip install jupyterlab` (or you **will not** use the installed one if you have it already), but you are going to follow this blog post to **use Docker**, [Jupyter notebook development workspace using Docker, Docker Compose and Git](https://nezhar.com/blog/jupyter-notebook-development-workspace-using-docker-and-git), to :
+
+* Create a docker-compose.yml file based on what you have seen on the blog post
 * Add this line to your docker-compose.yml
 ```
     container_name: jupyter_notebook # this line should already be there
