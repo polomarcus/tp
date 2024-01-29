@@ -14,7 +14,7 @@ Inside the article you've just read (i hope), you find this article [10 docker-c
 ### Step 1 - Start
 As many co-workers use different systems, you want to avoid errors such as "it works on my machine, but not yours" and you decide to use [Docker (click to see install link)](https://docs.docker.com/build/).
 
-If you are on Windows, you might have to [install WSL and follow this guide.](https://forums.docker.com/t/an-unexpected-error-was-encountered-while-executing-a-wsl-command/137525/40)
+**Windows users**, you might have to [install WSL and follow this guide.](https://forums.docker.com/t/an-unexpected-error-was-encountered-while-executing-a-wsl-command/137525/40) and enabled Virtualisation in your BIOS (restart your computer to enter your BIOS (F10/F10)
 
 So you will **NOT** install jupyter via `pip install jupyterlab` (or you **will not** use the installed one if you have it already), but you are going to follow this blog post to **use Docker**, [Jupyter notebook development workspace using Docker, Docker Compose and Git](https://nezhar.com/blog/jupyter-notebook-development-workspace-using-docker-and-git), to :
 

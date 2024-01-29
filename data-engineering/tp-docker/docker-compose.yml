@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jupyter:
+    image: jupyter/minimal-notebook
+    volumes:
+      - .:/home/jovyan/work
+    ports:
+      - 8888:8888
+    container_name: jupyter_notebook
+    environment:
+      - DOCKER=congrats_you_are_inside_a_docker_container
