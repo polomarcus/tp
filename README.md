@@ -8,9 +8,10 @@ Have a stackoverflow account : https://stackoverflow.com/
 Have a github account : https://github.com/
 
 ### A Scala IDE :
-1. Intellij Idea: https://www.jetbrains.com/fr-fr/idea/download
-2. Scala plugin : https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html
-3. Open Intellij and [set up the scala SDK and JDK](https://www.jetbrains.com/help/idea/sdk.html)  
+1. Install the IDE "Intellij Idea": https://www.jetbrains.com/fr-fr/idea/download
+2. [Fork this repo](https://docs.github.com/fr/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) to have your own copy.
+3. Clone your fork on your machine
+4. Open Intellij, go to "File" then "Open" and then only select the folder of the current exercice from your fork clone on your computer. Then, on IntelliJ [set up the scala SDK and JDK](https://www.jetbrains.com/help/idea/sdk.html)
 
 **Beware** : For Spark code, we have to use **Java 17** (JDK17) or inferior, otherwise you'll have [this error](https://stackoverflow.com/a/73349341/3535853) : 
 ```
