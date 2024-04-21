@@ -16,7 +16,9 @@ object ClimateService {
    * @param description "my awesome sentence contains a key word like climate change"
    * @return Boolean True
    */
-  def isClimateRelated(description: String): Boolean = ???
+  def isClimateRelated(description: String): Boolean = {
+    description.contains("global warming") || description.contains("IPCC") || description.contains("climate change")
+  }
 
   /**
    * parse a list of raw data and transport it with type into a list of CO2Record
@@ -26,8 +28,13 @@ object ClimateService {
    * you can access to Tuple with myTuple._1, myTuple._2, myTuple._3
    */
   def parseRawData(list: List[(Int, Int, Double)]) : List[Option[CO2Record]] = {
-    list.map { record => ??? }
-    ???
+    list.map { case (year, month, ppm) =>
+      if (CO2Record(year, month, ppm).isValidPpmValue) {
+        Some(CO2Record(year, month, ppm))
+      } else {
+        None
+      }
+    }
   }
 
   /**
@@ -36,15 +43,26 @@ object ClimateService {
    * @param list
    * @return a list
    */
-  def filterDecemberData(list: List[Option[CO2Record]]) : List[CO2Record] = ???
+  def filterDecemberData(list: List[Option[CO2Record]]) : List[CO2Record] = {
+      list.flatten.filterNot(record => record.month == 12)
+  }
 
 
   /**
    * **Tips**: look at the read me to find some tips for this function
    */
-  def getMinMax(list: List[CO2Record]) : (Double, Double) = ???
+  def getMinMax(list: List[CO2Record]) : (Double, Double) = {
+    val validPpm = list.filter(_.isValidPpmValue).map(_.ppm)
+    if (validPpm.nonEmpty) (validPpm.min,validPpm.max)
+    else (Double.NaN,Double.NaN)
+  }
 
-  def getMinMaxByYear(list: List[CO2Record], year: Int) : (Double, Double) = ???
+  def getMinMaxByYear(list: List[CO2Record], year: Int): (Double, Double) = {
+    val recordsForYear = list.filter(_.year == year)
+    val validPpmForYear = recordsForYear.filter(_.isValidPpmValue).map(_.ppm)
+    if (validPpmForYear.nonEmpty) (validPpmForYear.min, validPpmForYear.max)
+    else (Double.NaN, Double.NaN)
+  }
 
   /**
    * use this function side src/main/scala/com/polomarcus/main/Main (with sbt run)
@@ -56,8 +74,16 @@ object ClimateService {
    */
   def showCO2Data(list: List[Option[CO2Record]]): Unit = {
     logger.info("Call ClimateService.filterDecemberData here")
+    val filteredData = ClimateService.filterDecemberData(list)
 
     logger.info("Call record.show function here inside a map function")
+    filteredData.foreach {
+      case Some(record) => println(record.show())
+      case None => logger.warn("Found a None value")
+    }
+
+    val numberOfNoneValues = list.count(_.isEmpty)
+    logger.info(s"Number of None values: $numberOfNoneValues")
   }
 
   /**
