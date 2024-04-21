@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: hseeberger/scala-sbt:11.0.12_1.5.5_2.13.8
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: run tests
+      run: sbt test
