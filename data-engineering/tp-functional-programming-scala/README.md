@@ -14,14 +14,12 @@ For convenience, CO2 concentration levels have been inserted inside this file `u
 ![](https://assets.weforum.org/editor/large_EEYnarb17Mwon7wYfBZ_V6gUQ3hwp6_tpzpPzAMVLRw.png)
 
 ### How to write a Scala application ?
-* Install a Scala compatible IDE : Visual Studio with a Scala Plugin or Idea: https://www.jetbrains.com/idea/
-* Scala https://docs.scala-lang.org/getting-started/index.html
-* Another link if the first one does not work : https://www.scala-sbt.org/download.html
-* Help your colleagues to install their environment, the best way to learn.
+* Install a Scala compatible IDE, have a look at this documentation : https://github.com/polomarcus/tp/tree/main?tab=readme-ov-file#a-scala-ide-
 
-#### Could you install SBT on your machine ? If yes
-```bash
-sbt run
+### From IntelliJ Idea
+Using the [sbt shell](https://www.google.com/search?channel=fs&client=ubuntu-sn&q=intellij+idea+sbt+shell)
+```sbt
+run # inside the sbt shell - or sbt run if you are not inside the sbt shell
 ```
 
 Should give you `an implementation is missing` error :
@@ -38,8 +36,8 @@ Same for `sbt test`
 **Tips:** having trouble to install Idea, SBT or scala? You can use Docker and Docker Compose to run this code and use your default IDE to code or a web IDE https://scastie.scala-lang.org/:
 
 ```bash
-docker-compose build my-scala-app
-docker-compose run my-scala-app bash # connect to your container to acces to SBT
+docker compose build my-scala-app
+docker compose run my-scala-app bash # connect to your container to acces to SBT
 > sbt test
 # or 
 > sbt run
@@ -57,7 +55,7 @@ sbt
 ### Test Driven Development (TDD) - Write a function and its tests that detect climate related sentence
 1. Look at and update the function called "isClimateRelated" to add one more test `test/scala/ClimateServiceTest`
 2. Look at and update  the function called "isClimateRelated" inside `main/scala/com/github/polomarcus/utils/ClimateService`
-3. To see if your code works, run `testOnly ClimateServiceTest -- -z isClimateRelated`
+3. To see if your code works, run `testOnly ClimateServiceTest -- -z isClimateRelated` (or directly `test` inside "sbt"
 
 ### Write a function that use `Option[T]` to handle CO2 Record
 With data coming from Hawaii about CO2 concentration in the atmosphere (they are stored inside the function "getCO2RawDataFromHawaii()", iterate over it and find the difference between the max and the min value.
