@@ -12,8 +12,8 @@ Then, to start coding with IntelliJ click on the menu "File -> Open" and **selec
 ## TP 3- Batch with Spark and BI with Metabase
 * Open [tp-bi-spark-framework](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-bi-spark-framework)
 
-## TP 4 - Getting started with Apache Kafka (with Bash and Docker)
-* Open [tp-docker-kafka-bash]([https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka))
+## TP 4 - Getting started with Apache Kafka with Bash and Docker
+* Open [tp-docker-kafka-bash](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-docker-kafka))
 
 ## TP 5 - [Apache Kafka - Scala Client - Condutkor](https://kafka.apache.org/)
 * Open [tp-kafka-api](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-kafka-api)
