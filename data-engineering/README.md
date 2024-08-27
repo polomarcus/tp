@@ -1,4 +1,7 @@
-To start coding with IntelliJ click on "File -> Open" and **select only one folder** from the list below :
+## Welcome
+First be sure to have installed [these tools listed here](https://github.com/polomarcus/tp/tree/main?tab=readme-ov-file#tools-you-need).
+
+Then, to start coding with IntelliJ click on the menu "File -> Open" and **select only one folder** from the list below :
 
 ## TP 1 - Getting started with functional programming and Scala
 * Open [tp-functional-programming-scala](https://github.com/polomarcus/tp/tree/main/data-engineering/tp-functional-programming-scala)
