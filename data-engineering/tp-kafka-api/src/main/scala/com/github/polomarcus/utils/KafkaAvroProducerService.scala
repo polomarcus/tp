@@ -18,8 +18,10 @@ object KafkaAvroProducerService {
 
   props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")
 
-  // We want to serialize the value of a News object here : i.e. do a custom serialization (@see readme)
+  // @TODO We want to serialize the value of a News object here : i.e. do a custom serialization (@see readme)
   props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "io.confluent.kafka.serializers.KafkaAvroSerializer")
+
+  // @TODO this is how we connect to the Schema Registry
   props.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, ConfService.SCHEMA_REGISTRY)
 
   //@see https://kafka.apache.org/documentation/#producerconfigs_enable.idempotence
@@ -29,7 +31,7 @@ object KafkaAvroProducerService {
 
   def produce(topic: String, key: String, value: News): Unit = {
 
-    // pay attention here
+    // @TODO pay attention here
     val genericAvroRecord = RecordFormat[News].to(value) // @see https://softwaremill.com/hands-on-kafka-streams-in-scala/
 
     val record = new ProducerRecord(topic, key, genericAvroRecord)
