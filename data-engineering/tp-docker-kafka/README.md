@@ -1,8 +1,8 @@
-## TP - [Apache Kafka](https://kafka.apache.org/)
+## TP - Getting started with a data broker - [Apache Kafka](https://kafka.apache.org/)
 ### Communication problems
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_complex.png)
 
-### Why Kafka ?
+### Why a Broker such as Kafka ?
 
 ![](https://content.linkedin.com/content/dam/engineering/en-us/blog/migrated/datapipeline_simple.png)
 
@@ -10,11 +10,13 @@
 Start a kakfa server (called broker) using the docker compose recipe `docker-compose.yml` : 
 
 ```bash
-docker compose up --detach
+docker compose -f docker-compose.yml up --detach
 ```
 
 Check on the docker hub the image used : 
 * https://hub.docker.com/r/confluentinc/cp-kafka
+
+**Note** Using Mac M1 ? You have to change your image name `confluentinc/cp-kafka-connect:7.2.1.arm64` instead of `confluentinc/cp-kafka-connect:7.2.1`: https://github.com/provectus/kafka-ui/blob/master/documentation/compose/kafka-ui-arm64.yaml#L71
 
 ### Verify
 ```
@@ -24,14 +26,13 @@ b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 s
 (...)
 ```
 
-### Kafka User Interface - Conduktor
-Download and install : https://www.conduktor.io/download/
+### Kafka User Interface
+As Kafka does not have an interface, we are going to use the web app ["Kafka UI"](https://docs.kafka-ui.provectus.io/) thanks to docker compose.
 
-Using Conduktor, connect to **your existing docker kafka cluster** with `localhost:9092` and name : "Docker Cluster"
---> do not click on the blue button "Start local Kafka cluster" but on "New kafka cluster".
+Using Kafka UI on http://localhost:8080/, connect to **your existing docker kafka cluster** with `localhost:9092`.
 
-0. Using Conduktor, create a topic "mytopic" with 5 partitions
-1. Find the `mytopic` topic on Conduktor and its differents configs (ISR, Replication Factor...)
+0. Using Kafka UI, create a topic "mytopic" with 5 partitions
+1. Find the `mytopic` topic on Kafka UI and its differents configs (InSync Replica, Replication Factor...)
 2. Produce 10 messages (without a key) into it and read them
 3. Look on which topic's partitions they are located.
 4. Send another 10 messages but with a key called "my key"
@@ -65,8 +66,8 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 4. Keep reading events from a topic from one terminal : https://kafka.apache.org/documentation/#quickstart_consume
 * try the default config
 * what does the `--from-beginning` config do ? What happens when you do not use `--from-beginning` and instead the config `--group` such as --group?
-* Keep reading the message in your terminal and using Conduktor, can you notice something in the **Consumers tab** ? 
-* Now, in your terminal stop your consumer, notice the **lag** inside the **Consumer tab** on Conduktor, it should be **0**
+* Keep reading the message in your terminal and using Kafka UI, can you notice something in the **Consumers tab** ? 
+* Now, in your terminal stop your consumer, notice the **lag** inside the **Consumer tab** on Kafka UI, it should be **0**
 * With a producer, send message to the same topic, and look at the value of **lag**, what's happening ?
 * Restart your consumer with the same consumer group, what's happening ?
 * Trick question : What about using the `--group` option for your producer ?
@@ -79,10 +80,11 @@ Pay attention to the `KAFKA_ADVERTISED_LISTENERS` config from the docker-compose
 4. Recheck consumer group using `kafka-console-consumer`
 
 #### Replication - High Availability
-0. Stop your broker using `docker compose down` then with `docker-compose-multiple-kafka.yml` to start 3 brokers : `docker-compose -f docker-compose-multiple-kafka.yml up`
+0. Stop your broker using `docker compose down` then with the file `docker-compose-multiple-kafka.yml` start 3 brokers : `docker-compose -f docker-compose-multiple-kafka.yml up -d`
 1. Create a new topic with a replication factor (RF) of 3, in case one of your broker goes down : https://kafka.apache.org/documentation/#topicconfigs
 * `docker exec -ti tp-docker-kafka-kafka1-1 bash`
 * `kafka-topics --create --replication-factor 3 --partitions 2 --topic testreplicated --bootstrap-server localhost:19092`
+> Created topic testreplicated.
 2. Describe your topic, notice where the different partitions are replicated and where are the leaders
 * `kafka-topics --describe --topic testreplicated --bootstrap-server localhost:19092`
 3. now, stop one of your brokers with docker : `docker stop your_container`
