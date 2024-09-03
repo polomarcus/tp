@@ -23,15 +23,16 @@ b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 s
 (...)
 ```
 
+### Kafka User Interface
+As Kafka does not have an interface, we are going to use the web app ["Kafka UI"](https://docs.kafka-ui.provectus.io/) thanks to docker compose.
 
-### Kafka User Interface - Conduktor
-Download and install : https://www.conduktor.io/download/
+Using Kafka UI on http://localhost:8080/, connect to **your existing docker kafka cluster** with `localhost:9092`.
 
-0. Using Conduktor, create a topic "mytopic" with 5 partitions
-1. Find the `mytopic` topic on Conduktor and its differents configs (ISR, Replication Factor...)
+0. Using Kafka UI, create a topic "mytopic" with 5 partitions
+1. Find the `mytopic` topic on Kafka UI and its differents configs (InSync Replica, Replication Factor...)
 2. Produce 10 messages (without a key) into it and read them
 3. Look on which topic's partitions they are located.
-4. Send another 10 messages but with a key called "epf"
+4. Send another 10 messages but with a key called "my key"
 5. Look again on which topic's partitions they are located.
 
 Questions:
