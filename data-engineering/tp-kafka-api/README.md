@@ -25,6 +25,8 @@ b015e1d06372   confluentinc/cp-kafka:7.1.3       "/etc/confluent/dock…"   10 s
 (...)
 ```
 
+### Kafka User Interface
+As Kafka does not have an interface, we are going to use the web app ["Kafka UI"](https://docs.kafka-ui.provectus.io/) thanks to docker compose.
 
 ### Kafka with an User Interface is better
 As Kafka does not have an interface, we are going to use the web app ["Kafka UI"](https://docs.kafka-ui.provectus.io/) thanks to docker compose.
