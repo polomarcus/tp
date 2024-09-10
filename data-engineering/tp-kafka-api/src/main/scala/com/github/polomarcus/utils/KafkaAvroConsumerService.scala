@@ -60,8 +60,6 @@ object KafkaAvroConsumerService {
               s"""Consumed :
                  |Offset : ${record.offset()} from partition ${record.partition()}
                  |Unserialized value (raw) : ${record.value()}
-                 |Parsed value title : ${deserializedValue.title}
-                 |Parsed value media : ${deserializedValue.media}
                  |Key : ${record.key()}
                  |""".stripMargin)
           })
