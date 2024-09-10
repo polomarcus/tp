@@ -66,7 +66,7 @@ object KafkaStreamsService {
          |Stream started with this topology :
          |${topology.describe().toString}
          |----------------------------------------------------------------------------------------------------------------
-         |Waiting for messages (send them with Conduktor or run sbt "runMain com.github.polomarcus.main.MainKafkaProducer")
+         |Waiting for messages (send them with Kafka UI or run sbt "runMain com.github.polomarcus.main.MainKafkaProducer")
          |----------------------------------------------------------------------------------------------------------------
          |""".stripMargin
     )
