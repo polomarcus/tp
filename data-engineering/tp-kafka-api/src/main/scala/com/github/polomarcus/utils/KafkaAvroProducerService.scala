@@ -13,41 +13,45 @@ import java.util.concurrent.Future
 object KafkaAvroProducerService {
   val logger = Logger(KafkaAvroProducerService.getClass)
 
+  // Initialisation des propriétés Kafka pour le producteur
   private val props = new Properties()
   props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ConfService.BOOTSTRAP_SERVERS_CONFIG)
 
+  // Utilisation d'un sérialiseur Avro pour les clés
   props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")
 
-  // @TODO We want to serialize the value of a News object here : i.e. do a custom serialization (@see readme)
+  // TODO: Utiliser le sérialiseur Avro pour les valeurs (objet News)
   props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "io.confluent.kafka.serializers.KafkaAvroSerializer")
 
-  // @TODO this is how we connect to the Schema Registry
+  // Connexion au Schema Registry
   props.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, ConfService.SCHEMA_REGISTRY)
 
-  //@see https://kafka.apache.org/documentation/#producerconfigs_enable.idempotence
+  // Activer l'idempotence pour éviter les doublons de messages
   props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true")
 
   private val producer = new KafkaProducer[String, Record](props)
 
+  // Fonction d'envoi d'un message en utilisant Avro et le Schema Registry
   def produce(topic: String, key: String, value: News): Unit = {
-
-    // @TODO pay attention here
-    val genericAvroRecord = RecordFormat[News].to(value) // @see https://softwaremill.com/hands-on-kafka-streams-in-scala/
+    // Sérialiser l'objet News en Avro
+    val genericAvroRecord = RecordFormat[News].to(value)
 
     val record = new ProducerRecord(topic, key, genericAvroRecord)
     try {
       val metadata: Future[RecordMetadata] = producer.send(record)
 
+      // Log des informations après l'envoi du message
       logger.info(s"""
-        Sending message with key "$key" and value "${value.toString}"
+        Envoi du message avec clé "$key" et valeur "${value.toString}"
         Offset : ${metadata.get().offset()}
         Partition : ${metadata.get().partition()}
       """)
     } catch {
-      case e:Exception => logger.error(e.toString)
+      case e: Exception => logger.error(e.toString)
     }
   }
 
+  // Fermer le producteur proprement
   def close() = {
     producer.flush()
     producer.close()

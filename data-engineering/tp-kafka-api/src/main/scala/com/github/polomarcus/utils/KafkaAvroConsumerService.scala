@@ -6,7 +6,6 @@ import com.sksamuel.avro4s.{Record, RecordFormat}
 import com.typesafe.scalalogging.Logger
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
-import org.apache.kafka.clients.producer._
 
 import java.time.Duration
 import java.util.Properties
@@ -15,70 +14,70 @@ import scala.collection.JavaConverters._
 object KafkaAvroConsumerService {
   val logger = Logger(KafkaAvroConsumerService.getClass)
 
+  // Initialisation des propriétés Kafka pour le consommateur
   private val props = new Properties()
-  props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ConfService.BOOTSTRAP_SERVERS_CONFIG)
 
+  // Configuration du bootstrap serveur
+  props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ConfService.BOOTSTRAP_SERVERS_CONFIG)
+
+  // Désérialiseur pour les clés (String)
   val stringDeserializer = "org.apache.kafka.common.serialization.StringDeserializer"
-  val kafkaAvroDeserializer = "io.confluent.kafka.serializers.KafkaAvroDeserializer"
-  props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,stringDeserializer)
+  props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, stringDeserializer)
 
-  // We want to serialize the value of a News object here : i.e. do a custom serialization (@see readme)
+  // Désérialiseur Avro pour les valeurs
+  val kafkaAvroDeserializer = "io.confluent.kafka.serializers.KafkaAvroDeserializer"
   props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, kafkaAvroDeserializer)
+
+  // Connexion au Schema Registry
   props.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, ConfService.SCHEMA_REGISTRY)
   props.put(ConsumerConfig.GROUP_ID_CONFIG, ConfService.GROUP_ID)
-  val autoReset = ??? //@TODO @see https://kafka.apache.org/documentation/#consumerconfigs_auto.offset.reset
-  props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoReset)
 
+  // Lire à partir du dernier offset disponible
+  props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest")
+
+  // Création du consommateur Kafka
   private val consumer = new KafkaConsumer[String, Record](props)
 
+  // Souscription au topic Kafka
   val topicToRead = List(ConfService.TOPIC_OUT).asJava
   consumer.subscribe(topicToRead)
 
-  logger.info(
-    s"""Our Consumer configuration :
-       |Topics list : $topicToRead
-       |SCHEMA_REGISTRY_URL_CONFIG: ${ConfService.SCHEMA_REGISTRY}
-       |GROUP_ID: ${ConfService.GROUP_ID}
-       |AUTO_OFFSET_RESET_CONFIG: $autoReset
-       |KEY_DESERIALIZER_CLASS_CONFIG: $stringDeserializer
-       |VALUE_DESERIALIZER_CLASS_CONFIG: $kafkaAvroDeserializer
-       |""".stripMargin)
-
-
+  // Fonction de consommation des messages
   def consume(): Unit = {
     try {
-      for (i <- 0 to 20) { // to avoid a while(true) loop
+      for (i <- 0 to 20) { // Limiter la boucle pour éviter une consommation infinie
         val messages = consumer.poll(Duration.ofMillis(1000))
         val numberOfMessages = messages.count()
+
         if (numberOfMessages > 0) {
-          logger.info(s"Reading $numberOfMessages messages...")
-          messages.forEach(record => {
-            //@TODO how can we parse the raw data to a News object? @see producer for hints about RecordFormat
-            val deserializedValue = ???
-            // Deserialized Value [News]: title ${deserializedValue.title } media ${deserializedValue.media }
+          logger.info(s"Lecture de $numberOfMessages messages...")
+          messages.forEach { record =>
+            // Désérialiser l'objet Avro en News
+            val deserializedValue = RecordFormat[News].from(record.value())
             logger.info(
-              s"""Consumed :
-                 |Offset : ${record.offset()} from partition ${record.partition()}
-                 |Unserialized value (raw) : ${record.value()}
-                 |Key : ${record.key()}
+              s"""Message consommé :
+                 |Offset : ${record.offset()} de la partition ${record.partition()}
+                 |Valeur désérialisée : titre ${deserializedValue.title}, media ${deserializedValue.media}
+                 |Clé : ${record.key()}
                  |""".stripMargin)
-          })
+          }
         } else {
-          logger.info("No new messages, waiting 3 seconds")
+          logger.info("Aucun nouveau message, en attente de 3 secondes")
           Thread.sleep(3000)
         }
       }
-    }
-    catch {
+    } catch {
       case e: Exception =>
         logger.error(e.toString)
     } finally {
-      logger.warn("Closing our consumer, saving the consumer group offsets")
+      logger.warn("Fermeture du consommateur, sauvegarde des offsets du groupe")
       consumer.close()
     }
   }
 
-  def close() = {
+  // Méthode pour fermer le consommateur Kafka proprement
+  def close(): Unit = {
+    logger.info("Fermeture du consommateur Kafka")
     consumer.close()
   }
 }
