@@ -1,6 +1,6 @@
 # Practices - Data engineering
 
-## Getting Started
+## First step - Getting Started
 
 Start Kafka with Docker Compose and init it with news data thanks to :
 ```bash
@@ -11,9 +11,9 @@ chmod 755 init.sh
 ./init.sh
 ```
 
-**Important** : As we have a streaming application, we need to send data again, do it by running `init.sh` again.
+**Important** : As we have a streaming application, we need to send data again and again, we can do it by running `init.sh` again and again.
 
-## Apache Spark Structured Streaming with Apache Kafka
+## Second step - Apache Spark Structured Streaming with Apache Kafka
 To process a large amount of data partitioned on a data lake, you can use data processing frameworks such as Apache Spark.
 
 Spark allows us to perform batch or streaming query :
@@ -32,7 +32,7 @@ Some questions :
 * How to configure the Spark consumer and producer ? [Help](https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html#kafka-specific-configurations)
 * Can we use the Schema Registry with Spark ? [Help 1](https://learn.microsoft.com/en-us/azure/databricks/_static/notebooks/schema-registry-integration/avro-data-and-schema-registry.html)
 
-## Code
+## Third Step - Code
 The goal is to process JSON data coming from the Kafka topics "news".
 
 To run the app `sbt run`
