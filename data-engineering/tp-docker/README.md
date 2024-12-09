@@ -78,7 +78,7 @@ You can make your image public by using the docker hub : https://docs.docker.com
 3. Download it and use it locally
 
 
-### Bonus: Step 6 - Continuous Integration (CI)
+### Step 6 - Continuous Integration (CI)
 If it works on your machine, congrats ! But remember, engineers have to work as team and to be sure it works on others' machines, you have to do something more.
 
 Test it on a remote servers now thanks to a Continuous Integration (CI) system such as [GitHub Actions](https://github.com/features/actions) :
@@ -91,3 +91,6 @@ Test it on a remote servers now thanks to a Continuous Integration (CI) system s
 Every commit on a branch should start a CI job to start the containers and display the logs.
 
 You can find [help for this step here](https://github.com/polomarcus/tp/issues/2#issue-1669333101)
+
+### Step 7 : HuggingFace
+Use [HuggingFace](https://huggingface.co/) to deploy a JupyterLab application on a HuggingFace Space
