@@ -62,7 +62,7 @@ Help:
 from sklearn.feature_extraction.text import CountVectorizer
 ```
 
-### Step 4 - Use PosgresSQL
+### Step 4 - Use PostgreSQL
 To save our CSV data to a SQL database, we are going to add a service to our docker-compose.yml file.
 
 1. Try a postgresql image on [the Docker Hub](https://hub.docker.com/_/postgres)
