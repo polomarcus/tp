@@ -96,4 +96,4 @@ Every commit on a branch should start a CI job to start the containers and displ
 You can find [help for this step here](https://github.com/polomarcus/tp/issues/2#issue-1669333101)
 
 ### Step 7 : HuggingFace
-Use [HuggingFace](https://huggingface.co/) to deploy a JupyterLab application on a HuggingFace Space using Docker
+Use [HuggingFace](https://huggingface.co/) to deploy a [JupyterLab application on a HuggingFace Space using Docker in a new Space](https://huggingface.co/new-space)
