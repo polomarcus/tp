@@ -78,7 +78,7 @@ You can make your image public by using the docker hub : https://docs.docker.com
 
 1. Create your account
 2. Publish your image
-3. **Bonus:** Download it and use it locally
+3. **Bonus:** Download it and use it locally. Find some useful information about [how to use or build an image here as well.](https://docs.docker.com/reference/compose-file/build/#using-build-and-image)
 
 ### Step 6 - Continuous Integration (CI)
 If it works on your machine, congrats ! But remember, engineers have to work as team and to be sure it works on others' machines, you have to do something more.
